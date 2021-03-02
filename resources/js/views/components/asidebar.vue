@@ -113,10 +113,22 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                             <router-link :to="{ name: 'unidadmedida-index' }" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Unidad de medida</p>
+                             </router-link>
+                        </li>
+                         <li class="nav-item">
+                             <router-link :to="{ name: 'categoria-index' }" class="nav-link">
+                            <i class="far fa-circle nav-icon"></i>
+                            <p>Categoria del material</p>
+                             </router-link>
+                        </li>
+                        <li class="nav-item">
+                             <router-link :to="{ name: 'proveedor-index' }" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Proveedor</p>
-                            </a>
+                             </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'nota-salida-index' }" class="nav-link">
