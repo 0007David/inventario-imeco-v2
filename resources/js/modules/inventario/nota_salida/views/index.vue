@@ -54,8 +54,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-
-                                                    <tr role="row" v-for="(notaSalida, index) in notaSalidas">
+                                                    <tr role="row" v-for="(notaSalida, index) in notaSalidas" :key="notaSalida.id">
                                                         <td> {{ index+1 }}</td>
                                                         <td> {{ 'Nota-000' +index }} </td>
                                                         <td> {{ notaSalida.nombre }} </td>

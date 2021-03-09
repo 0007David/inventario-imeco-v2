@@ -29,7 +29,7 @@
                                 <!-- <h3 class="card-title">DataTable with minimal features &amp; hover style</h3> -->
                                 <router-link
                                     class="btn btn-primary"
-                                    :to="{ name: 'proveedor-create'}">
+                                    :to="{ name: 'rol-create'}">
                                     Nuevo
                                 </router-link>
                             </div>

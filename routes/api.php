@@ -53,7 +53,7 @@ Route::post('/proveedor', 'ProveedorController@store')->name('proveedor-store');
 Route::put('/proveedor/{id}', 'ProveedorController@update')->name('proveedor-update');
 Route::delete('/proveedor/{id}', 'ProveedorController@destroy')->name('proveedor-delete');
 
-//PROVEEDOR
+//UNIDAD DE MEDIDA
 Route::get('/unidadmedida', 'UnidadMedidaController@index')->name('unidadmedida');
 Route::get('/unidadmedida/{id}/edit', 'UnidadMedidaController@edit')->name('unidadmedida-edit');
 Route::get('/unidadmedida/create', 'UnidadMedidaController@create')->name('unidadmedida-create');
@@ -96,3 +96,8 @@ Route::get('/stock/create', 'StockController@create')->name('stock-create');
 Route::post('/stock', 'StockController@store')->name('stock-store');
 Route::put('/stock/{id}', 'StockController@update')->name('stock-update');
 Route::delete('/stock/{id}', 'StockController@destroy')->name('stock-delete');
+
+//PLANILLA DE REQUERIMIENTO
+Route::get('/planilla', 'PlanillaController@index')->name('planilla');;
+Route::get('/planilla/create', 'PlanillaController@create')->name('planilla-create');
+Route::post('/planilla', 'PlanillaController@store')->name('planilla-store');

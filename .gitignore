@@ -1,6 +1,7 @@
 /node_modules
 /.vscode
 /public/hot
+/public/mix-manifest.json
 /public/storage
 /storage/*.key
 /vendor
