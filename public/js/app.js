@@ -58899,13 +58899,13 @@ window.Vue = __webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.common.
 
 Vue.component('pagination', __webpack_require__(/*! laravel-vue-pagination */ "./node_modules/laravel-vue-pagination/dist/laravel-vue-pagination.common.js"));
 Vue.component('navbar', function () {
-  return __webpack_require__.e(/*! import() */ 27).then(__webpack_require__.bind(null, /*! ./views/components/navbar.vue */ "./resources/js/views/components/navbar.vue"));
+  return __webpack_require__.e(/*! import() */ 30).then(__webpack_require__.bind(null, /*! ./views/components/navbar.vue */ "./resources/js/views/components/navbar.vue"));
 });
 Vue.component('asidebar', function () {
-  return __webpack_require__.e(/*! import() */ 25).then(__webpack_require__.bind(null, /*! ./views/components/asidebar.vue */ "./resources/js/views/components/asidebar.vue"));
+  return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ./views/components/asidebar.vue */ "./resources/js/views/components/asidebar.vue"));
 });
 Vue.component('footer-template', function () {
-  return __webpack_require__.e(/*! import() */ 26).then(__webpack_require__.bind(null, /*! ./views/components/footer.vue */ "./resources/js/views/components/footer.vue"));
+  return __webpack_require__.e(/*! import() */ 29).then(__webpack_require__.bind(null, /*! ./views/components/footer.vue */ "./resources/js/views/components/footer.vue"));
 });
 Vue.use(vue_router__WEBPACK_IMPORTED_MODULE_0__["default"]);
 Vue.use(vue_sweetalert2__WEBPACK_IMPORTED_MODULE_4__["default"]);
@@ -59255,7 +59255,7 @@ var almacenRoutes = [{
   path: '/almacen',
   name: 'almacen-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/almacen/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/almacen/views/index.vue"));
   },
   meta: {
     title: title + 'es'
@@ -59264,7 +59264,7 @@ var almacenRoutes = [{
   path: '/almacen/create',
   name: 'almacen-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/almacen/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/almacen/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59273,7 +59273,7 @@ var almacenRoutes = [{
   path: '/almacen/:id/edit',
   name: 'almacen-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/almacen/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 27).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/almacen/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59297,7 +59297,7 @@ var categoriaRoutes = [{
   path: '/categoria',
   name: 'categoria-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/categoria/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/categoria/views/index.vue"));
   },
   meta: {
     title: title + 'es'
@@ -59306,7 +59306,7 @@ var categoriaRoutes = [{
   path: '/categoria/create',
   name: 'categoria-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/categoria/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/categoria/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59315,7 +59315,7 @@ var categoriaRoutes = [{
   path: '/categoria/:id/edit',
   name: 'categoria-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 19).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/categoria/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/categoria/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59339,7 +59339,7 @@ var materialRoutes = [{
   path: '/material',
   name: 'material-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/material/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/material/views/index.vue"));
   },
   meta: {
     title: title + 'es'
@@ -59348,7 +59348,7 @@ var materialRoutes = [{
   path: '/material/create',
   name: 'material-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/material/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/material/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59357,7 +59357,7 @@ var materialRoutes = [{
   path: '/material/:id/edit',
   name: 'material-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 13).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/material/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/material/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59381,7 +59381,7 @@ var notaSalidaRoutes = [{
   path: '/nota-salida',
   name: 'nota-salida-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 15).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/nota_salida/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 17).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/nota_salida/views/index.vue"));
   },
   meta: {
     title: title + 's'
@@ -59390,7 +59390,7 @@ var notaSalidaRoutes = [{
   path: '/nota-salida/create',
   name: 'nota-salida-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 14).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/nota_salida/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/nota_salida/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59399,7 +59399,7 @@ var notaSalidaRoutes = [{
   path: '/nota-salida/:id/edit',
   name: 'nota-salida-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 16).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/nota_salida/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 18).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/nota_salida/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59423,7 +59423,7 @@ var proveedorRoutes = [{
   path: '/proveedor',
   name: 'proveedor-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 20).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/proveedor/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 22).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/proveedor/views/index.vue"));
   },
   meta: {
     title: title + 'es'
@@ -59432,7 +59432,7 @@ var proveedorRoutes = [{
   path: '/proveedor/create',
   name: 'proveedor-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 7).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/proveedor/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/proveedor/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59441,7 +59441,7 @@ var proveedorRoutes = [{
   path: '/proveedor/:id/edit',
   name: 'proveedor-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 21).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/proveedor/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/proveedor/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59503,7 +59503,7 @@ var unidadmedidaRoutes = [{
   path: '/unidadmedida',
   name: 'unidadmedida-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 22).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/unidad_medida/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 24).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/inventario/unidad_medida/views/index.vue"));
   },
   meta: {
     title: title + 'es'
@@ -59512,7 +59512,7 @@ var unidadmedidaRoutes = [{
   path: '/unidadmedida/create',
   name: 'unidadmedida-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 8).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/unidad_medida/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/inventario/unidad_medida/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59521,7 +59521,7 @@ var unidadmedidaRoutes = [{
   path: '/unidadmedida/:id/edit',
   name: 'unidadmedida-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 23).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/unidad_medida/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 25).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/inventario/unidad_medida/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59545,7 +59545,7 @@ var etapaRoutes = [{
   path: '/etapa',
   name: 'etapa-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 29).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/proyectos/etapas/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 32).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/proyectos/etapas/views/index.vue"));
   },
   meta: {
     title: title + 's'
@@ -59554,7 +59554,7 @@ var etapaRoutes = [{
   path: '/etapa/create',
   name: 'etapa-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/proyectos/etapas/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 34).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/proyectos/etapas/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59563,7 +59563,7 @@ var etapaRoutes = [{
   path: '/etapa/:id/edit',
   name: 'etapa-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 32).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/proyectos/etapas/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 35).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/proyectos/etapas/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59572,13 +59572,74 @@ var etapaRoutes = [{
   path: '/etapa/board',
   name: 'etapa-board',
   component: function component() {
-    return Promise.all(/*! import() */[__webpack_require__.e(30), __webpack_require__.e(0)]).then(__webpack_require__.bind(null, /*! ../views/board.vue */ "./resources/js/modules/proyectos/etapas/views/board.vue"));
+    return Promise.all(/*! import() */[__webpack_require__.e(33), __webpack_require__.e(1)]).then(__webpack_require__.bind(null, /*! ../views/board.vue */ "./resources/js/modules/proyectos/etapas/views/board.vue"));
   },
   meta: {
     title: title + ' | Board'
   }
 }];
 /* harmony default export */ __webpack_exports__["default"] = (etapaRoutes);
+
+/***/ }),
+
+/***/ "./resources/js/modules/proyectos/planilla/routes/planillaRoutes.js":
+/*!**************************************************************************!*\
+  !*** ./resources/js/modules/proyectos/planilla/routes/planillaRoutes.js ***!
+  \**************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+var title = "Planilla";
+var planillaRoutes = [{
+  path: '/planilla',
+  name: 'planilla-index',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 26).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/proyectos/planilla/views/index.vue"));
+  },
+  meta: {
+    title: title + 'es'
+  }
+}, {
+  path: '/planilla/create',
+  name: 'planilla-create',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/proyectos/planilla/views/create.vue"));
+  },
+  meta: {
+    title: title + ' | Nuevo'
+  }
+}, {
+  path: '/planilla/:id/edit',
+  name: 'planilla-edit',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/proyectos/planilla/views/update.vue"));
+  },
+  meta: {
+    title: title + ' | Modificar'
+  }
+}, //////mis rutas
+{
+  path: '/planilla/:id/editmaterial',
+  name: 'planilla-edit-material',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/proyectos/planilla/views/update.vue"));
+  },
+  meta: {
+    title: title + ' | ModificarMaterial'
+  }
+}, {
+  path: '/planilla/:id/addmaterial',
+  name: 'planilla-add-material',
+  component: function component() {
+    return __webpack_require__.e(/*! import() */ 0).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/proyectos/planilla/views/update.vue"));
+  },
+  meta: {
+    title: title + ' | AdicionarMaterial'
+  }
+}];
+/* harmony default export */ __webpack_exports__["default"] = (planillaRoutes);
 
 /***/ }),
 
@@ -59592,6 +59653,7 @@ var etapaRoutes = [{
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _etapas_routes_etapaRoutes__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../etapas/routes/etapaRoutes */ "./resources/js/modules/proyectos/etapas/routes/etapaRoutes.js");
+/* harmony import */ var _planilla_routes_planillaRoutes__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../planilla/routes/planillaRoutes */ "./resources/js/modules/proyectos/planilla/routes/planillaRoutes.js");
 function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
 
 function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
@@ -59604,10 +59666,10 @@ function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToAr
 
 function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
 
+
  // import rolRoutes from "../roles/routes/rolRoutes";
 
-var moduleProyectosRoutes = _toConsumableArray(_etapas_routes_etapaRoutes__WEBPACK_IMPORTED_MODULE_0__["default"]);
-
+var moduleProyectosRoutes = [].concat(_toConsumableArray(_etapas_routes_etapaRoutes__WEBPACK_IMPORTED_MODULE_0__["default"]), _toConsumableArray(_planilla_routes_planillaRoutes__WEBPACK_IMPORTED_MODULE_1__["default"]));
 /* harmony default export */ __webpack_exports__["default"] = (moduleProyectosRoutes);
 
 /***/ }),
@@ -59626,7 +59688,7 @@ var rolRoutes = [{
   path: '/rol',
   name: 'rol-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 1).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/usuarios/roles/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/usuarios/roles/views/index.vue"));
   },
   meta: {
     title: title + 'es'
@@ -59635,7 +59697,7 @@ var rolRoutes = [{
   path: '/rol/create',
   name: 'rol-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 9).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/usuarios/roles/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 11).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/usuarios/roles/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59644,7 +59706,7 @@ var rolRoutes = [{
   path: '/rol/:id/modificar',
   name: 'rol-modificar',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 2).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/usuarios/roles/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/usuarios/roles/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59698,7 +59760,7 @@ var usuarioRoutes = [{
   path: '/usuario',
   name: 'usuario-index',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 3).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/usuarios/usuario/views/index.vue"));
+    return __webpack_require__.e(/*! import() */ 5).then(__webpack_require__.bind(null, /*! ../views/index.vue */ "./resources/js/modules/usuarios/usuario/views/index.vue"));
   },
   meta: {
     title: title + 's'
@@ -59707,7 +59769,7 @@ var usuarioRoutes = [{
   path: '/usuario/create',
   name: 'usuario-create',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 10).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/usuarios/usuario/views/create.vue"));
+    return __webpack_require__.e(/*! import() */ 12).then(__webpack_require__.bind(null, /*! ../views/create.vue */ "./resources/js/modules/usuarios/usuario/views/create.vue"));
   },
   meta: {
     title: title + ' | Nuevo'
@@ -59716,7 +59778,7 @@ var usuarioRoutes = [{
   path: '/usuario/:id/edit',
   name: 'usuario-edit',
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 4).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/usuarios/usuario/views/update.vue"));
+    return __webpack_require__.e(/*! import() */ 6).then(__webpack_require__.bind(null, /*! ../views/update.vue */ "./resources/js/modules/usuarios/usuario/views/update.vue"));
   },
   meta: {
     title: title + ' | Modificar'
@@ -59812,7 +59874,7 @@ var routes = [{
     return beforeEnter;
   }(),
   component: function component() {
-    return __webpack_require__.e(/*! import() */ 28).then(__webpack_require__.bind(null, /*! ../views/layout/notFound */ "./resources/js/views/layout/notFound.vue"));
+    return __webpack_require__.e(/*! import() */ 31).then(__webpack_require__.bind(null, /*! ../views/layout/notFound */ "./resources/js/views/layout/notFound.vue"));
   }
 }]);
 /* harmony default export */ __webpack_exports__["default"] = (routes);

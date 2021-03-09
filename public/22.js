@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[22],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=script&lang=js&":
-/*!********************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=script&lang=js& ***!
-  \********************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=script&lang=js&":
+/*!****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=script&lang=js& ***!
+  \****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -115,26 +115,30 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'index',
   created: function created() {
-    this.getUnidadMedidas();
+    this.getProveedores();
   },
   data: function data() {
     return {
-      unidadmedidas: []
+      proveedores: []
     };
   },
   methods: {
-    getUnidadMedidas: function getUnidadMedidas() {
+    getProveedores: function getProveedores() {
       var _this = this;
 
-      _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/unidadmedida').then(function (response) {
+      _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/proveedor').then(function (response) {
         // console.log(response);
         var respuesta = response.data.data;
-        _this.unidadmedidas = respuesta.unidadmedidas;
+        _this.proveedores = respuesta.proveedores;
       })["catch"](function (error) {
         // console.log(error);
         alert(error); // this.setErrorAlmacen(error);
@@ -142,13 +146,13 @@ __webpack_require__.r(__webpack_exports__);
         // console.log('finally request');
       });
     },
-    eliminarUnidadMedida: function eliminarUnidadMedida(index, id) {
+    eliminarProveedor: function eliminarProveedor(index, id) {
       var _this2 = this;
 
-      var unidad = this.getUnidadMedida(id);
+      var proveedor = this.getProveedor(id);
       this.$swal.fire({
         title: 'Esta Seguro de Eliminar',
-        text: "A la unidad " + unidad.nombre + ".",
+        text: "Al almacen " + proveedor.name + ".",
         icon: 'warning',
         showCancelButton: true,
         confirmButtonColor: '#d33',
@@ -157,7 +161,7 @@ __webpack_require__.r(__webpack_exports__);
         cancelButtonText: 'Cancelar'
       }).then(function (result) {
         if (result.value) {
-          _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/unidadmedida/' + id).then(function (response) {
+          _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/proveedor/' + id).then(function (response) {
             _this2.$swal.fire({
               title: 'Success!',
               text: response.data.message,
@@ -167,16 +171,16 @@ __webpack_require__.r(__webpack_exports__);
             }); // console.log(response.data.message);
 
 
-            _this2.unidadmedidas.splice(index, 1);
+            _this2.proveedores.splice(index, 1);
           });
         }
       });
     },
-    getUnidadMedida: function getUnidadMedida(id) {
-      var unidad = this.unidadmedidas.filter(function (unidad) {
-        return unidad.id == id;
+    getProveedor: function getProveedor(id) {
+      var proveedor = this.proveedores.filter(function (proveedor) {
+        return proveedor.id == id;
       });
-      return unidad[0];
+      return proveedor[0];
     },
     encrypt: function encrypt(value) {
       return Object(_mixins_util__WEBPACK_IMPORTED_MODULE_1__["btoa"])(value);
@@ -186,10 +190,10 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=template&id=10000b68&":
-/*!************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=template&id=10000b68& ***!
-  \************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=template&id=14c98b28&":
+/*!********************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=template&id=14c98b28& ***!
+  \********************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -217,7 +221,7 @@ var render = function() {
                     "router-link",
                     {
                       staticClass: "btn btn-primary",
-                      attrs: { to: { name: "unidadmedida-create" } }
+                      attrs: { to: { name: "proveedor-create" } }
                     },
                     [
                       _vm._v(
@@ -253,18 +257,34 @@ var render = function() {
                             _vm._v(" "),
                             _c(
                               "tbody",
-                              _vm._l(_vm.unidadmedidas, function(
-                                unidad,
+                              _vm._l(_vm.proveedores, function(
+                                proveedor,
                                 index
                               ) {
                                 return _c(
                                   "tr",
-                                  { key: unidad.id, attrs: { role: "row" } },
+                                  { key: proveedor.id, attrs: { role: "row" } },
                                   [
-                                    _c("td", [_vm._v(" " + _vm._s(unidad.id))]),
+                                    _c("td", [
+                                      _vm._v(" " + _vm._s(proveedor.id))
+                                    ]),
                                     _vm._v(" "),
                                     _c("td", [
-                                      _vm._v(" " + _vm._s(unidad.nombre) + " ")
+                                      _vm._v(
+                                        " " + _vm._s(proveedor.nombre) + " "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        " " + _vm._s(proveedor.telefono) + " "
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        " " + _vm._s(proveedor.direccion) + " "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c(
@@ -276,8 +296,8 @@ var render = function() {
                                             staticClass: "btn btn-warning",
                                             attrs: {
                                               to:
-                                                "/unidadmedida/" +
-                                                _vm.encrypt(unidad.id) +
+                                                "/proveedor/" +
+                                                _vm.encrypt(proveedor.id) +
                                                 "/edit",
                                               "data-toggle": "tooltip",
                                               "data-placement": "top",
@@ -301,9 +321,9 @@ var render = function() {
                                           staticClass: "btn btn-danger",
                                           on: {
                                             click: function($event) {
-                                              return _vm.eliminarUnidadMedida(
+                                              return _vm.eliminarProveedor(
                                                 index,
-                                                unidad.id
+                                                proveedor.id
                                               )
                                             }
                                           }
@@ -344,7 +364,7 @@ var staticRenderFns = [
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row mb-2" }, [
           _c("div", { staticClass: "col-sm-6" }, [
-            _c("h1", { staticClass: "m-0" }, [_vm._v("Unidad de medida")])
+            _c("h1", { staticClass: "m-0" }, [_vm._v("Proveedor")])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-6" }, [
@@ -354,7 +374,7 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "breadcrumb-item active" }, [
-                _vm._v("Unidad medida")
+                _vm._v("Almacen")
               ])
             ])
           ])
@@ -381,6 +401,10 @@ var staticRenderFns = [
         _c("th", [_vm._v("Codigo")]),
         _vm._v(" "),
         _c("th", [_vm._v("Nombre")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Telefono")]),
+        _vm._v(" "),
+        _c("th", [_vm._v("Direccion")]),
         _vm._v(" "),
         _c("th", [_vm._v("Editar")]),
         _vm._v(" "),
@@ -418,17 +442,17 @@ function atob(value) {
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/unidad_medida/views/index.vue":
-/*!***********************************************************************!*\
-  !*** ./resources/js/modules/inventario/unidad_medida/views/index.vue ***!
-  \***********************************************************************/
+/***/ "./resources/js/modules/inventario/proveedor/views/index.vue":
+/*!*******************************************************************!*\
+  !*** ./resources/js/modules/inventario/proveedor/views/index.vue ***!
+  \*******************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_vue_vue_type_template_id_10000b68___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=10000b68& */ "./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=template&id=10000b68&");
-/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _index_vue_vue_type_template_id_14c98b28___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=14c98b28& */ "./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=template&id=14c98b28&");
+/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -439,8 +463,8 @@ __webpack_require__.r(__webpack_exports__);
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
   _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _index_vue_vue_type_template_id_10000b68___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _index_vue_vue_type_template_id_10000b68___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _index_vue_vue_type_template_id_14c98b28___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _index_vue_vue_type_template_id_14c98b28___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
   null,
@@ -450,38 +474,38 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/modules/inventario/unidad_medida/views/index.vue"
+component.options.__file = "resources/js/modules/inventario/proveedor/views/index.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=script&lang=js&":
-/*!************************************************************************************************!*\
-  !*** ./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=script&lang=js& ***!
-  \************************************************************************************************/
+/***/ "./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=script&lang=js&":
+/*!********************************************************************************************!*\
+  !*** ./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=script&lang=js& ***!
+  \********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=script&lang=js&");
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=script&lang=js&");
 /* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=template&id=10000b68&":
-/*!******************************************************************************************************!*\
-  !*** ./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=template&id=10000b68& ***!
-  \******************************************************************************************************/
+/***/ "./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=template&id=14c98b28&":
+/*!**************************************************************************************************!*\
+  !*** ./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=template&id=14c98b28& ***!
+  \**************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_10000b68___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=10000b68& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/unidad_medida/views/index.vue?vue&type=template&id=10000b68&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_10000b68___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_14c98b28___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=14c98b28& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/proveedor/views/index.vue?vue&type=template&id=14c98b28&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_14c98b28___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_10000b68___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_14c98b28___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

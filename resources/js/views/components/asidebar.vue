@@ -52,6 +52,13 @@
                             </router-link>
                         </li>
 
+                        <li class="nav-item">
+                            <router-link :to="{ name: 'planilla-index' }" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Mis planillas</p>
+                            </router-link>
+                        </li>
+
                     </ul>
                 </li>
                 <li class="nav-item">

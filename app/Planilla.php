@@ -3,12 +3,14 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Material;
 
-class Categoria extends Model
+class Planilla extends Model
 {
-    protected $table = 'categoria';
+    protected $table = 'planilla';
 
     protected $hidden = [
         'remember_token',
     ];
+
 }
