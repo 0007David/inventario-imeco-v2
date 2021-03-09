@@ -101,10 +101,10 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
-                            <i class="far fa-circle nav-icon"></i>
-                            <p>Stock</p>
-                            </a>
+                            <router-link :to="{ name: 'stock-index' }" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Stock</p>
+                            </router-link>
                         </li>
                         <li class="nav-item">
                             <router-link :to="{ name: 'material-index' }" class="nav-link">

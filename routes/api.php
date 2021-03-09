@@ -68,3 +68,31 @@ Route::get('/categoria/create', 'CategoriaController@create')->name('categoria-c
 Route::post('/categoria', 'CategoriaController@store')->name('categoria-store');
 Route::put('/categoria/{id}', 'CategoriaController@update')->name('categoria-update');
 Route::delete('/categoria/{id}', 'CategoriaController@destroy')->name('categoria-delete');
+
+//Material
+Route::get('/material', 'MaterialController@index')->name('material');
+Route::get('/material/{id}/edit', 'MaterialController@edit')->name('material-edit');
+Route::get('/material/create', 'MaterialController@create')->name('material-create');
+Route::get('/material/{id}/show', 'MaterialController@show')->name('material-show');
+Route::post('/material', 'MaterialController@store')->name('material-store');
+Route::put('/material/{id}', 'MaterialController@update')->name('material-update');
+Route::delete('/material/{id}', 'MaterialController@destroy')->name('material-delete');
+Route::get('/depende', 'DependeMaterialController@index')->name('depende');
+Route::get('/depende/{id}/show', 'DependeMaterialController@show')->name('depende-show');
+Route::post('/depende', 'DependeMaterialController@store')->name('depende-store');
+
+//Nota de Salida
+Route::get('/nota_salida', 'NotaSalidaController@index')->name('nota_salida');
+Route::get('/nota_salida/{id}/edit', 'NotaSalidaController@edit')->name('nota_salida-edit');
+Route::get('/nota_salida/create', 'NotaSalidaController@create')->name('nota_salida-create');
+Route::post('/nota_salida', 'NotaSalidaController@store')->name('nota_salida-store');
+Route::put('/nota_salida/{id}', 'NotaSalidaController@update')->name('nota_salida-update');
+Route::delete('/nota_salida/{id}', 'NotaSalidaController@destroy')->name('nota_salida-delete');
+
+//Stock
+Route::get('/stock', 'StockController@index')->name('stock');
+Route::get('/stock/{id}/edit', 'StockController@edit')->name('stock-edit');
+Route::get('/stock/create', 'StockController@create')->name('stock-create');
+Route::post('/stock', 'StockController@store')->name('stock-store');
+Route::put('/stock/{id}', 'StockController@update')->name('stock-update');
+Route::delete('/stock/{id}', 'StockController@destroy')->name('stock-delete');

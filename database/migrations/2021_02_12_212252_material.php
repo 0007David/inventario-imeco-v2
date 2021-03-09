@@ -16,18 +16,19 @@ class Material extends Migration
         Schema::create('material', function (Blueprint $table) {
 
             $table->bigIncrements('codigo')->unique();
-            $table->string('nombre');
+            $table->string('nro_material', 12)->unique();
+            $table->string('nombre',250);
             $table->double('precio');
-            $table->string('descripcion');
+            $table->string('descripcion',300)->nullable();
+            $table->boolean('es_padre')->default(false);
             $table->unsignedBigInteger('id_unidad');
             $table->unsignedBigInteger('id_categoria');
             $table->rememberToken();
             $table->timestamps();
-            
             //relations with other tables
             $table->foreign('id_unidad')->references('id')->on('unidad_medida');
             $table->foreign('id_categoria')->references('id')->on('categoria');
-           
+
         });
     }
 

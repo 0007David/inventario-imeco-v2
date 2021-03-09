@@ -1,44 +1,48 @@
 <template>
-    <div class="content-wrapper py-2">
-        <div class='row justify-content-center'>
-            <div class='col-md-6 offset-1'>
-                <div class='card'>
-                    <div class='card-header'>Crear nuevo rol</div>
-                    <div class='card-body'>
-                        <div class="alert alert-danger" v-if="errors.length">
-                            <b>Terdapat kesalahan dalam input data:</b>
-                            <ul>
-                                <li v-for="error in errors" :key="error">{{ error }}</li>
-                            </ul>
-                        </div>
+    <div class="content-wrapper">
+        <section class="content">
+            <div class="container-fluid">
+                <div class='row'>
+                    <div class='col-md-6 offset-1'>
+                        <div class='card'>
+                            <div class='card-header'>Crear nuevo rol</div>
+                            <div class='card-body'>
+                                <div class="alert alert-danger" v-if="errors.length">
+                                    <b>Terdapat kesalahan dalam input data:</b>
+                                    <ul>
+                                        <li v-for="error in errors" :key="error">{{ error }}</li>
+                                    </ul>
+                                </div>
 
-                        <form v-on:submit.prevent="guardar">
-                            <div class='form-group'>
-                                <label htmlFor='name'>
-                                    Nombre
-                                </label>
-                                <input
-                                    id="name"
-                                    required
-                                    type="text"
-                                    class="form-control"
-                                    v-model="formData.nombre">
+                                <form v-on:submit.prevent="guardar">
+                                    <div class='form-group'>
+                                        <label htmlFor='name'>
+                                            Nombre
+                                        </label>
+                                        <input
+                                            id="name"
+                                            required
+                                            type="text"
+                                            class="form-control"
+                                            v-model="formData.nombre">
+                                    </div>
+                                    <div class='form-group'>
+                                        <router-link
+                                            :to="{ name: 'rol-index' }"
+                                            class="btn btn-secondary">
+                                            Cancelar
+                                        </router-link>
+                                        &nbsp;
+                                        &nbsp;
+                                        <button type="submit" class='btn btn-primary'>Guardar</button>
+                                    </div>
+                                </form>
                             </div>
-                            <div class='form-group'>
-                                <router-link
-                                    :to="{ name: 'rol-index' }"
-                                    class="btn btn-secondary">
-                                    Cancelar
-                                </router-link>
-                                &nbsp;
-                                &nbsp;
-                                <button type="submit" class='btn btn-primary'>Guardar</button>
-                            </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     </div>
 </template>
 

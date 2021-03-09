@@ -23,6 +23,14 @@ const notaSalidaRoutes = [
         meta: {
             title: title + ' | Modificar'
         }
+    },
+	{
+        path: '/nota-salida/:id/show',
+        name: 'nota-salida-show',
+        component: () => import ('../views/show.vue'),
+        meta: {
+            title: title + ' | Modificar'
+        }
     }
 ];
 export default notaSalidaRoutes;

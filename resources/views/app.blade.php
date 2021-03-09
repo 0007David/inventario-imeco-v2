@@ -30,7 +30,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body class="hold-transition sidebar-mini layout-fixed">
+<body style="overflow-x: hidden;" class="hold-transition sidebar-mini layout-fixed">
 
     <div class="wrapper" id="app"></div>
 

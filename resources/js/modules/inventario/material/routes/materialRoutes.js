@@ -23,6 +23,14 @@ const materialRoutes = [
         meta: {
             title: title + ' | Modificar'
         }
+    },
+	{
+        path: '/material/:id/show',
+        name: 'material-show',
+        component: () => import ('../views/show.vue'),
+        meta: {
+            title: title + ' | Modificar'
+        }
     }
 ];
 export default materialRoutes;

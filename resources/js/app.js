@@ -7,10 +7,14 @@ import VueAxios from 'vue-axios';
 import axios from 'axios';
 import App from '../js/views/App.vue';
 import VueSweetalert2 from 'vue-sweetalert2';
+import BootstrapVue from 'bootstrap-vue';
 
 import routes from './router/routes';
 // If you don't need the styles, do not connect
 import 'sweetalert2/dist/sweetalert2.min.css';
+// Boostrap
+import "bootstrap/dist/css/bootstrap.css";
+import "bootstrap-vue/dist/bootstrap-vue.css";
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 
@@ -20,6 +24,7 @@ Vue.component('footer-template',() => import('./views/components/footer.vue'));
 
 Vue.use(VueRouter);
 Vue.use(VueSweetalert2);
+Vue.use(BootstrapVue);
 Vue.use(VueAxios, axios);
 
 const router = new VueRouter({

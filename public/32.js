@@ -1,8 +1,8 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[32],{
 
-/***/ "./resources/js/modules/proyectos/etapas/views/update.vue":
+/***/ "./resources/js/modules/proyectos/etapas/views/create.vue":
 /*!****************************************************************!*\
-  !*** ./resources/js/modules/proyectos/etapas/views/update.vue ***!
+  !*** ./resources/js/modules/proyectos/etapas/views/create.vue ***!
   \****************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
@@ -27,7 +27,7 @@ var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_
   
 )
 
-component.options.__file = "resources/js/modules/proyectos/etapas/views/update.vue"
+component.options.__file = "resources/js/modules/proyectos/etapas/views/create.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ })

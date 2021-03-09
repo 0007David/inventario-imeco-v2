@@ -19,11 +19,9 @@ class Depende extends Migration
             $table->unsignedBigInteger('cod_materialhijo');
             $table->rememberToken();
             $table->timestamps();
-            
             //relations with other tables
             $table->foreign('cod_materialpadre')->references('codigo')->on('material');
             $table->foreign('cod_materialhijo')->references('codigo')->on('material');
-           
         });
     }
 
