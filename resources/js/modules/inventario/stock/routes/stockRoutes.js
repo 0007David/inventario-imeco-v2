@@ -8,5 +8,13 @@ const stockRoutes = [
 			title: title + 's'
 		}
 	},
+	{
+		path: '/stock/create',
+		name: 'stock-create',
+		component: () => import ('../views/create.vue'),
+		meta: {
+			title: 'Stock | Crear'
+		}
+	},
 ];
 export default stockRoutes;

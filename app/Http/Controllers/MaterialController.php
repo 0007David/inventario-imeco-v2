@@ -23,7 +23,7 @@ class MaterialController extends Controller
         $page = $request->page;
         $offset = ($page - 1) * $perPage;
         $sql = "SELECT ma.codigo, ma.nro_material, ma.nombre,
-                ma.precio, ma.es_padre, ma.descripcion,
+                ma.precio, ma.cantidad_max, ma.cantidad_min, ma.es_padre, ma.descripcion,
                 ca.nombre as categoria, un.nombre as unidad_medida
         FROM material ma
             inner join categoria ca on ca.id = ma.id_categoria

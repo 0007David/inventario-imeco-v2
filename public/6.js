@@ -1,9 +1,9 @@
 (window["webpackJsonp"] = window["webpackJsonp"] || []).push([[6],{
 
-/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=script&lang=js&":
-/*!******************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=script&lang=js& ***!
-  \******************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=script&lang=js&":
+/*!*****************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=script&lang=js& ***!
+  \*****************************************************************************************************************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -119,99 +119,126 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
-  name: 'index',
+  name: 'show',
   created: function created() {
-    this.getNotaSalidas();
+    this.getData();
   },
   data: function data() {
     return {
-      notaSalidas: [],
-      roles: []
+      isBusy: false,
+      detalleNotaCompra: [],
+      notaCompra: {
+        id: 1,
+        codigo_nota: '',
+        proveedor: 'Pedido de Proyecto 1',
+        fecha: '2021-01-06',
+        montototal: 0,
+        usuario: 'Secretaria'
+      },
+      fieldsSelected: [// A virtual column that doesn't exist in items
+      {
+        key: 'index',
+        label: 'N°',
+        "class": 'text-center',
+        thStyle: {
+          width: '1%'
+        }
+      }, {
+        key: 'nro_material',
+        label: 'Codigo',
+        "class": 'text-center',
+        thStyle: {
+          width: '2%'
+        },
+        sortable: true
+      }, {
+        key: 'categoria',
+        label: 'Categoria',
+        "class": 'text-center',
+        thStyle: {
+          width: '8%'
+        },
+        sortable: true
+      }, {
+        key: 'nombre',
+        label: 'Nombre',
+        "class": 'text-center',
+        thStyle: {
+          width: '20%'
+        },
+        sortable: true
+      }, {
+        key: 'precio',
+        label: 'Precio',
+        "class": 'text-center',
+        thStyle: {
+          width: '4%'
+        },
+        sortable: true
+      }, {
+        key: 'cantidad',
+        label: 'Cantidad',
+        "class": 'text-center',
+        thStyle: {
+          width: '4%'
+        },
+        sortable: true
+      }, {
+        key: 'unidad_medida',
+        label: 'Unidad Medida',
+        "class": 'text-center',
+        thStyle: {
+          width: '8%'
+        },
+        sortable: true
+      }],
+      errors: []
     };
   },
   methods: {
-    getNotaSalidas: function getNotaSalidas() {
+    getData: function getData() {
       var _this = this;
 
-      _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/nota_salida').then(function (response) {
+      this.isBusy = true;
+      _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/nota_compra/' + this.desencrypt(this.$route.params.id) + '/show').then(function (response) {
         var respuesta = response.data.data;
-        console.log(respuesta);
-        _this.notaSalidas = respuesta.notaSalidas;
+        console.log(response.data);
+        _this.notaCompra = respuesta.notaCompra;
+        _this.notaCompra.codigo_nota = 'N00' + _this.notaCompra.id;
+        _this.detalleNotaCompra = respuesta.detalle;
       })["catch"](function (error) {
-        // console.log(error);
-        alert(error); // this.setErrorUsuario(error);
-      })["finally"](function () {// this.modalDestroyConfirmation = false;
-        // console.log('finally request');
+        console.log(error);
+        alert(error);
       });
     },
-    eliminarNotaSalida: function eliminarNotaSalida(index, id) {
-      var _this2 = this;
-
-      var notaSalida = this.getNotaSalida(id);
-      this.$swal.fire({
-        title: 'Esta Seguro de Eliminar',
-        text: "Al nota salida Nro: " + notaSalida.id + ".",
-        icon: 'warning',
-        showCancelButton: true,
-        confirmButtonColor: '#d33',
-        cancelButtonColor: '#3085d6',
-        confirmButtonText: 'Eliminar',
-        cancelButtonText: 'Cancelar'
-      }).then(function (result) {
-        if (result.value) {
-          _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"]["delete"]('/nota_salida/' + id).then(function (response) {
-            _this2.$swal.fire({
-              title: 'Success!',
-              text: response.data.message,
-              //'Se ha eliminada el notaSalida exitosamente',
-              icon: 'success',
-              timer: 1000
-            }); // console.log(response.data.message);
-
-
-            _this2.notaSalidas.splice(index, 1);
-          });
-        }
-      });
-    },
-    rolName: function rolName(id) {
-      var rol = this.roles.filter(function (rol) {
-        return rol.id == id;
-      });
-      return rol[0].nombre;
-    },
-    getNotaSalida: function getNotaSalida(id) {
-      var notaSalida = this.notaSalidas.filter(function (notaSalida) {
-        return notaSalida.id == id;
-      });
-      return notaSalida[0];
-    },
-    getRandomString: function getRandomString() {
-      var result = '';
-      var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-      var charactersLength = characters.length;
-
-      for (var i = 0; i < length; i++) {
-        result += characters.charAt(Math.floor(Math.random() * charactersLength));
-      }
-
-      return result;
-    },
-    encrypt: function encrypt(value) {
-      return Object(_mixins_util__WEBPACK_IMPORTED_MODULE_1__["btoa"])(value);
+    desencrypt: function desencrypt(value) {
+      return Object(_mixins_util__WEBPACK_IMPORTED_MODULE_1__["atob"])(value);
     }
+  },
+  watch: {// detalleNotaCompra: function(newValue, oldValue) {
+    //     console.log(newValue);
+    //     console.log(oldValue);
+    // },
   }
 });
 
 /***/ }),
 
-/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css&":
-/*!*************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css& ***!
-  \*************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css&":
+/*!************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css& ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
@@ -220,22 +247,22 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*Estilo CSS*/\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*Estilo CSS*/\n", ""]);
 
 // exports
 
 
 /***/ }),
 
-/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css&":
-/*!*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css& ***!
-  \*****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css&":
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/style-loader!./node_modules/css-loader??ref--6-1!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src??ref--6-2!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css& ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css&");
+var content = __webpack_require__(/*! !../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css& */ "./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css&");
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -257,10 +284,10 @@ if(false) {}
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=template&id=301b61c3&scoped=true&":
-/*!**********************************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=template&id=301b61c3&scoped=true& ***!
-  \**********************************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=template&id=8cae6334&scoped=true&":
+/*!*********************************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=template&id=8cae6334&scoped=true& ***!
+  \*********************************************************************************************************************************************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -278,7 +305,7 @@ var render = function() {
     _c("section", { staticClass: "content" }, [
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
+          _c("div", { staticClass: "col-md-12" }, [
             _c("div", { staticClass: "card" }, [
               _c(
                 "div",
@@ -287,12 +314,12 @@ var render = function() {
                   _c(
                     "router-link",
                     {
-                      staticClass: "btn btn-primary",
-                      attrs: { to: { name: "nota-salida-create" } }
+                      staticClass: "btn btn-secondary",
+                      attrs: { to: { name: "nota-compra-index" } }
                     },
                     [
                       _vm._v(
-                        "\n                                Nuevo\n                            "
+                        "\n                                Regresar\n                            "
                       )
                     ]
                   )
@@ -300,151 +327,221 @@ var render = function() {
                 1
               ),
               _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticClass: "dataTables_wrapper dt-bootstrap4",
-                    attrs: { id: "example2_wrapper" }
-                  },
-                  [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-sm-12" }, [
-                        _c(
-                          "table",
-                          {
-                            staticClass:
-                              "table table-bordered table-hover dataTable",
-                            attrs: {
-                              id: "tablaUsuario",
-                              role: "grid",
-                              "aria-describedby": "example2_info"
-                            }
-                          },
-                          [
-                            _vm._m(2),
-                            _vm._v(" "),
-                            _c(
-                              "tbody",
-                              _vm._l(_vm.notaSalidas, function(
-                                notaSalida,
-                                index
-                              ) {
-                                return _c(
-                                  "tr",
-                                  {
-                                    key: notaSalida.id,
-                                    attrs: { role: "row" }
-                                  },
-                                  [
-                                    _c("td", [_vm._v(" " + _vm._s(index + 1))]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s("Nota-000" + index) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(notaSalida.nombre) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(notaSalida.fecha) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(notaSalida.usuario) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "btn btn-info",
-                                            attrs: {
-                                              to:
-                                                "/nota-salida/" +
-                                                _vm.encrypt(notaSalida.id) +
-                                                "/show",
-                                              "data-toggle": "tooltip",
-                                              "data-placement": "top",
-                                              title: "Ver detalle"
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-eye"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "btn btn-warning",
-                                            attrs: {
-                                              to:
-                                                "/nota-salida/" +
-                                                _vm.encrypt(notaSalida.id) +
-                                                "/edit",
-                                              "data-toggle": "tooltip",
-                                              "data-placement": "top",
-                                              title: "Editar"
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-edit"
-                                            })
-                                          ]
-                                        ),
-                                        _vm._v(" "),
-                                        _c(
-                                          "button",
-                                          {
-                                            staticClass: "btn btn-danger",
-                                            on: {
-                                              click: function($event) {
-                                                return _vm.eliminarNotaSalida(
-                                                  index,
-                                                  notaSalida.id
-                                                )
-                                              }
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-eraser",
-                                              staticStyle: { cursor: "pointer" }
-                                            })
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    )
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ]
+              _c(
+                "div",
+                { staticClass: "card-body" },
+                [
+                  _c("b-row", [
+                    _c("div", { staticClass: "form-group col-md-3" }, [
+                      _c("label", { attrs: { htmlFor: "codigo" } }, [
+                        _vm._v(
+                          "\n                                        Codigo\n                                    "
                         )
-                      ])
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notaCompra.codigo_nota,
+                            expression: "notaCompra.codigo_nota"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "codigo", type: "text", readonly: "" },
+                        domProps: { value: _vm.notaCompra.codigo_nota },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.notaCompra,
+                              "codigo_nota",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      { staticClass: "form-group col-md-9" },
+                      [
+                        _c("label", { attrs: { htmlFor: "proveedor" } }, [
+                          _vm._v(
+                            "\n                                        Proveedor\n                                    "
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("b-form-input", {
+                          attrs: { id: "proveedor" },
+                          model: {
+                            value: _vm.notaCompra.proveedor,
+                            callback: function($$v) {
+                              _vm.$set(_vm.notaCompra, "proveedor", $$v)
+                            },
+                            expression: "notaCompra.proveedor"
+                          }
+                        })
+                      ],
+                      1
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("div", { staticClass: "form-group col-md-6" }, [
+                      _c("label", { attrs: { htmlFor: "fecha" } }, [
+                        _vm._v(
+                          "\n                                        Fecha\n                                    "
+                        )
+                      ]),
+                      _vm._v(" "),
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.notaCompra.fecha,
+                            expression: "notaCompra.fecha"
+                          }
+                        ],
+                        staticClass: "form-control",
+                        attrs: { id: "fecha", required: "", type: "date" },
+                        domProps: { value: _vm.notaCompra.fecha },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.notaCompra,
+                              "fecha",
+                              $event.target.value
+                            )
+                          }
+                        }
+                      })
                     ])
-                  ]
-                )
-              ])
+                  ]),
+                  _vm._v(" "),
+                  _c("b-row", [
+                    _c("div", { staticClass: "col-sm-12 text-center" }, [
+                      _c("h3", [_vm._v("Detalle nota de Compra")])
+                    ]),
+                    _vm._v(" "),
+                    _c(
+                      "div",
+                      {
+                        staticClass: "col-sm-12",
+                        staticStyle: { display: "block", width: "100%" }
+                      },
+                      [
+                        _c("b-table", {
+                          staticClass:
+                            "table table-striped table-bordered table-hover",
+                          attrs: {
+                            fields: _vm.fieldsSelected,
+                            items: _vm.detalleNotaCompra,
+                            small: "",
+                            responsive: "sm"
+                          },
+                          scopedSlots: _vm._u([
+                            {
+                              key: "cell(index)",
+                              fn: function(row) {
+                                return [
+                                  _vm._v(
+                                    "\n                                                " +
+                                      _vm._s(row.index + 1) +
+                                      "\n                                        "
+                                  )
+                                ]
+                              }
+                            },
+                            {
+                              key: "table-busy",
+                              fn: function() {
+                                return [
+                                  _c(
+                                    "div",
+                                    {
+                                      staticClass:
+                                        "text-center text-danger my-2"
+                                    },
+                                    [
+                                      _c("b-spinner", {
+                                        staticClass: "align-middle"
+                                      }),
+                                      _vm._v(" "),
+                                      _c("strong", [_vm._v("Loading...")])
+                                    ],
+                                    1
+                                  )
+                                ]
+                              },
+                              proxy: true
+                            }
+                          ])
+                        })
+                      ],
+                      1
+                    ),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-md-12" }, [
+                      _c(
+                        "div",
+                        { staticClass: "form-inline col-md-6 offset-6" },
+                        [
+                          _c(
+                            "label",
+                            { staticClass: "m-2", attrs: { for: "monto" } },
+                            [
+                              _vm._v(
+                                "\n                                            Monto Total (Bs)\n                                        "
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("input", {
+                            directives: [
+                              {
+                                name: "model",
+                                rawName: "v-model",
+                                value: _vm.notaCompra.montototal,
+                                expression: "notaCompra.montototal"
+                              }
+                            ],
+                            staticClass: "form-control",
+                            attrs: {
+                              id: "monto",
+                              required: "",
+                              readonly: "",
+                              type: "text"
+                            },
+                            domProps: { value: _vm.notaCompra.montototal },
+                            on: {
+                              input: function($event) {
+                                if ($event.target.composing) {
+                                  return
+                                }
+                                _vm.$set(
+                                  _vm.notaCompra,
+                                  "montototal",
+                                  $event.target.value
+                                )
+                              }
+                            }
+                          })
+                        ]
+                      )
+                    ])
+                  ])
+                ],
+                1
+              )
             ])
           ])
         ])
@@ -461,7 +558,11 @@ var staticRenderFns = [
       _c("div", { staticClass: "container-fluid" }, [
         _c("div", { staticClass: "row mb-2" }, [
           _c("div", { staticClass: "col-sm-6" }, [
-            _c("h1", { staticClass: "m-0" }, [_vm._v("Lista Notas de Salidas")])
+            _c("h3", { staticClass: "m-0" }, [
+              _vm._v(
+                "\n                        Nota de Compra\n                    "
+              )
+            ])
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-sm-6" }, [
@@ -471,41 +572,11 @@ var staticRenderFns = [
               ]),
               _vm._v(" "),
               _c("li", { staticClass: "breadcrumb-item active" }, [
-                _vm._v("Notas Salida")
+                _vm._v("Nota de Compra")
               ])
             ])
           ])
         ])
-      ])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "row" }, [
-      _c("div", { staticClass: "col-sm-12 col-md-6" }),
-      _vm._v(" "),
-      _c("div", { staticClass: "col-sm-12 col-md-6" })
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("thead", [
-      _c("tr", { attrs: { role: "row" } }, [
-        _c("th", [_vm._v("#")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Nro Nota")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Destino")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Fecha")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Emitido por")]),
-        _vm._v(" "),
-        _c("th", [_vm._v("Operaciones")])
       ])
     ])
   }
@@ -539,18 +610,18 @@ function atob(value) {
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/nota_salida/views/index.vue":
-/*!*********************************************************************!*\
-  !*** ./resources/js/modules/inventario/nota_salida/views/index.vue ***!
-  \*********************************************************************/
+/***/ "./resources/js/modules/inventario/nota_compra/views/show.vue":
+/*!********************************************************************!*\
+  !*** ./resources/js/modules/inventario/nota_compra/views/show.vue ***!
+  \********************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _index_vue_vue_type_template_id_301b61c3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./index.vue?vue&type=template&id=301b61c3&scoped=true& */ "./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=template&id=301b61c3&scoped=true&");
-/* harmony import */ var _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./index.vue?vue&type=script&lang=js& */ "./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport *//* harmony import */ var _index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css& */ "./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css&");
+/* harmony import */ var _show_vue_vue_type_template_id_8cae6334_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./show.vue?vue&type=template&id=8cae6334&scoped=true& */ "./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=template&id=8cae6334&scoped=true&");
+/* harmony import */ var _show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./show.vue?vue&type=script&lang=js& */ "./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css& */ "./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -561,66 +632,66 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 
 var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_3__["default"])(
-  _index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _index_vue_vue_type_template_id_301b61c3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
-  _index_vue_vue_type_template_id_301b61c3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  _show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _show_vue_vue_type_template_id_8cae6334_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _show_vue_vue_type_template_id_8cae6334_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
   false,
   null,
-  "301b61c3",
+  "8cae6334",
   null
   
 )
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/modules/inventario/nota_salida/views/index.vue"
+component.options.__file = "resources/js/modules/inventario/nota_compra/views/show.vue"
 /* harmony default export */ __webpack_exports__["default"] = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=script&lang=js&":
-/*!**********************************************************************************************!*\
-  !*** ./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=script&lang=js& ***!
-  \**********************************************************************************************/
+/***/ "./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=script&lang=js&":
+/*!*********************************************************************************************!*\
+  !*** ./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=script&lang=js& ***!
+  \*********************************************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=script&lang=js&");
-/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css&":
-/*!******************************************************************************************************************************!*\
-  !*** ./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css& ***!
-  \******************************************************************************************************************************/
+/***/ "./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css&":
+/*!*****************************************************************************************************************************!*\
+  !*** ./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css& ***!
+  \*****************************************************************************************************************************/
 /*! no static exports found */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=style&index=0&id=301b61c3&scoped=true&lang=css&");
-/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
-/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
- /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_style_index_0_id_301b61c3_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/style-loader!../../../../../../node_modules/css-loader??ref--6-1!../../../../../../node_modules/vue-loader/lib/loaders/stylePostLoader.js!../../../../../../node_modules/postcss-loader/src??ref--6-2!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css& */ "./node_modules/style-loader/index.js!./node_modules/css-loader/index.js?!./node_modules/vue-loader/lib/loaders/stylePostLoader.js!./node_modules/postcss-loader/src/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=style&index=0&id=8cae6334&scoped=true&lang=css&");
+/* harmony import */ var _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__);
+/* harmony reexport (unknown) */ for(var __WEBPACK_IMPORT_KEY__ in _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__) if(__WEBPACK_IMPORT_KEY__ !== 'default') (function(key) { __webpack_require__.d(__webpack_exports__, key, function() { return _node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0__[key]; }) }(__WEBPACK_IMPORT_KEY__));
+ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_style_loader_index_js_node_modules_css_loader_index_js_ref_6_1_node_modules_vue_loader_lib_loaders_stylePostLoader_js_node_modules_postcss_loader_src_index_js_ref_6_2_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_style_index_0_id_8cae6334_scoped_true_lang_css___WEBPACK_IMPORTED_MODULE_0___default.a); 
 
 /***/ }),
 
-/***/ "./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=template&id=301b61c3&scoped=true&":
-/*!****************************************************************************************************************!*\
-  !*** ./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=template&id=301b61c3&scoped=true& ***!
-  \****************************************************************************************************************/
+/***/ "./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=template&id=8cae6334&scoped=true&":
+/*!***************************************************************************************************************!*\
+  !*** ./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=template&id=8cae6334&scoped=true& ***!
+  \***************************************************************************************************************/
 /*! exports provided: render, staticRenderFns */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_301b61c3_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./index.vue?vue&type=template&id=301b61c3&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_salida/views/index.vue?vue&type=template&id=301b61c3&scoped=true&");
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_301b61c3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_template_id_8cae6334_scoped_true___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../../node_modules/vue-loader/lib??vue-loader-options!./show.vue?vue&type=template&id=8cae6334&scoped=true& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/modules/inventario/nota_compra/views/show.vue?vue&type=template&id=8cae6334&scoped=true&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_template_id_8cae6334_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
-/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_index_vue_vue_type_template_id_301b61c3_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_show_vue_vue_type_template_id_8cae6334_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

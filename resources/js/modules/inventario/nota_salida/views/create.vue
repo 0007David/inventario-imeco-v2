@@ -112,11 +112,6 @@
                                         </b-table>
                                     </div>
                                 </b-row>
-                                <b-row>
-                                    <pre>
-                                        {{selectedMateriales}}
-                                    </pre>
-                                </b-row>
                             </div>
                             <!-- /.card-body -->
                         </form>
@@ -149,9 +144,6 @@
                         ></b-form-select>
                         <span class="pt-2 ml-1"> Registros</span>
                         </div>
-                    </div>
-                    <div class="col-sm-3">
-                        <b-button class="mb-2" size="sm" @click="clearSelected">DesSeleccionar Todo</b-button>
                     </div>
                     <div class="col-sm-3 offset-sm-3 text-right">
                         <div class="form-group row">
@@ -266,7 +258,7 @@ import { atob } from '../../../../mixins/util';
                     {key:'nro_material', label:'Codigo', class: 'text-center', thStyle: {width: '2%'}, sortable: true},
 					{key:'nombre', label:'Nombre', class: 'text-center', thStyle: {width: '20%'}, sortable: true},
 					{key:'categoria', label:'Categoria', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
-                    {key:'stock_disponible', label:'Stock', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
+                    {key:'stock_disponible', label:'Cantidad', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
                     {key:'eliminar', label:' ', class: 'text-center', thStyle: {width: '1%'}, sortable: true},
 				],
                 errors: []
@@ -308,10 +300,6 @@ import { atob } from '../../../../mixins/util';
                     // console.log(error);
                     alert(error);
                     // this.setErrorUsuario(error);
-                })
-                .finally(() => {
-                    // this.modalDestroyConfirmation = false;
-                    // console.log('finally request');
                 });
             },
             eliminarMaterial(index) {

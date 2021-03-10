@@ -1,0 +1,180 @@
+<template>
+    <div class="content-wrapper">
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h3 class="m-0">
+                            Nota de Compra
+                        </h3>
+                    </div><!-- /.col -->
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                            <li class="breadcrumb-item active">Nota de Compra</li>
+                        </ol>
+                    </div><!-- /.col -->
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </div>
+        <!-- /.content-header -->
+        <section class="content">
+            <div class='container-fluid'>
+                <!-- Main row -->
+                <div class="row">
+                    <div class='col-md-12'>
+                        <div class='card'>
+                            <div class='card-header'>
+                                <router-link
+                                    :to="{ name: 'nota-compra-index' }"
+                                    class="btn btn-secondary">
+                                    Regresar
+                                </router-link>
+                            </div>
+                            <div class='card-body'>
+                                <b-row>
+                                    <div class='form-group col-md-3'>
+                                        <label htmlFor='codigo'>
+                                            Codigo
+                                        </label>
+                                        <input
+                                            id="codigo" type="text" readonly
+                                            class="form-control"
+                                            v-model="notaCompra.codigo_nota">
+                                    </div>
+                                    <div class='form-group col-md-9'>
+                                        <label htmlFor='proveedor'>
+                                            Proveedor
+                                        </label>
+                                        <b-form-input
+                                            id="proveedor" v-model="notaCompra.proveedor"
+                                        ></b-form-input>
+                                    </div>
+                                </b-row>
+                                <b-row>
+                                    <div class='form-group col-md-6'>
+                                        <label htmlFor='fecha'>
+                                            Fecha
+                                        </label>
+                                        <input
+                                            id="fecha"
+                                            required
+                                            type="date"
+                                            class="form-control"
+                                            v-model="notaCompra.fecha">
+                                    </div>
+                                </b-row>
+                                <b-row>
+                                    <div class="col-sm-12 text-center">
+                                        <h3>Detalle nota de Compra</h3>
+                                    </div>
+                                    <div class="col-sm-12"  style="display: block; width: 100%">
+                                         <b-table
+                                            class="table table-striped table-bordered table-hover"
+                                            :fields="fieldsSelected"
+                                            :items="detalleNotaCompra"
+                                            small
+                                            responsive="sm">
+                                            <template #cell(index)="row">
+                                                    {{ row.index + 1 }}
+                                            </template>
+                                            <template #table-busy>
+                                                <div class="text-center text-danger my-2">
+                                                    <b-spinner class="align-middle"></b-spinner>
+                                                    <strong>Loading...</strong>
+                                                </div>
+                                            </template>
+                                        </b-table>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-inline col-md-6 offset-6">
+                                            <label for='monto' class="m-2">
+                                                Monto Total (Bs)
+                                            </label>
+                                            <input
+                                                id="monto"
+                                                required
+                                                readonly
+                                                type="text"
+                                                class="form-control"
+                                                v-model="notaCompra.montototal">
+                                        </div>
+                                    </div>
+                                </b-row>
+                            </div>
+                            <!-- /.card-body -->
+                        </div>
+                        <!-- /.card -->
+                    </div>
+                </div><!-- /.row -->
+            </div><!-- /.container-fluid -->
+        </section>
+        <!-- /.content -->
+    </div>
+</template>
+
+<script>
+import axiosClient from '../../../../utils/axiosClient';
+import { atob } from '../../../../mixins/util';
+    export default {
+        name: 'show',
+        created() {
+            this.getData();
+        },
+        data() {
+            return {
+                isBusy: false,
+                detalleNotaCompra: [],
+                notaCompra: {
+                    id: 1,
+                    codigo_nota: '',
+                    proveedor: 'Pedido de Proyecto 1',
+                    fecha: '2021-01-06',
+                    montototal: 0,
+                    usuario: 'Secretaria'
+                },
+                 fieldsSelected: [
+                    // A virtual column that doesn't exist in items
+                    {key:'index', label:'N°', class: 'text-center', thStyle: {width: '1%'}},
+                    {key:'nro_material', label:'Codigo', class: 'text-center', thStyle: {width: '2%'}, sortable: true},
+					{key:'categoria', label:'Categoria', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
+					{key:'nombre', label:'Nombre', class: 'text-center', thStyle: {width: '20%'}, sortable: true},
+                    {key:'precio', label:'Precio', class: 'text-center', thStyle: {width: '4%'}, sortable: true},
+                    {key:'cantidad', label:'Cantidad', class: 'text-center', thStyle: {width: '4%'}, sortable: true},
+                    {key:'unidad_medida', label:'Unidad Medida', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
+				],
+                errors: []
+            }
+        },
+        methods: {
+            getData() {
+                this.isBusy = true;
+                axiosClient.get(
+                    '/nota_compra/'+ this.desencrypt(this.$route.params.id) + '/show'
+                ).then(response => {
+                    let respuesta = response.data.data;
+                    console.log(response.data);
+                    this.notaCompra = respuesta.notaCompra;
+                    this.notaCompra.codigo_nota = 'N00'+ this.notaCompra.id;
+                    this.detalleNotaCompra = respuesta.detalle;
+                }).catch(error => {
+                    console.log(error);
+                    alert(error);
+                });
+            },
+            desencrypt(value) {
+                return atob(value);
+            },
+        },
+        watch: {
+            // detalleNotaCompra: function(newValue, oldValue) {
+            //     console.log(newValue);
+            //     console.log(oldValue);
+            // },
+        }
+    }
+</script>
+<style scoped>
+    /*Estilo CSS*/
+</style>

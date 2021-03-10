@@ -6,14 +6,13 @@
                 <div class="row mb-2">
                     <div class="col-sm-6">
                         <h3 class="m-0">
-                            Material:
-                            <small>{{material.nombre}}</small>
+                            Nota de Salida
                         </h3>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
                             <li class="breadcrumb-item"><a href="#">Admin</a></li>
-                            <li class="breadcrumb-item active">Material</li>
+                            <li class="breadcrumb-item active">Nota de Salida</li>
                         </ol>
                     </div><!-- /.col -->
                 </div><!-- /.row -->
@@ -27,23 +26,11 @@
                     <div class='col-md-12'>
                         <div class='card'>
                             <div class='card-header'>
-                                <b-button
-                                    @click="showModalDepepende"
-                                    variant="primary">
-                                    Agregar Material Dependientes
-                                </b-button>
-                                <b-button
-                                    v-if="seGuardaForm"
-                                    @click="storeMateriales"
-                                    variant="success">
-                                    Guardar
-                                </b-button>
                                 <router-link
-                                    :to="{ name: 'material-index' }"
+                                    :to="{ name: 'nota-salida-index' }"
                                     class="btn btn-secondary">
                                     Regresar
                                 </router-link>
-
                             </div>
                             <div class='card-body'>
                                 <b-row>
@@ -54,28 +41,28 @@
                                         <input
                                             id="codigo" type="text" readonly
                                             class="form-control"
-                                            v-model="formData.codigo_nota">
+                                            value="Nota-0001">
                                     </div>
                                     <div class='form-group col-md-9'>
                                         <label htmlFor='nombre'>
                                             Destino
                                         </label>
                                         <b-form-input
-                                            id="nombre" v-model="formData.nombre"
+                                            id="nombre" v-model="notaSalida.nombre"
                                         ></b-form-input>
                                     </div>
                                 </b-row>
                                 <b-row>
                                     <div class='form-group col-md-6'>
-                                        <label htmlFor='nombre'>
+                                        <label htmlFor='fecha'>
                                             Nombre
                                         </label>
                                         <input
-                                            id="nombre"
+                                            id="fecha"
                                             required
                                             type="date"
                                             class="form-control"
-                                            v-model="formData.fecha">
+                                            v-model="notaSalida.fecha">
                                     </div>
                                 </b-row>
                                 <b-row>
@@ -86,7 +73,7 @@
                                          <b-table
                                             class="table table-striped table-bordered table-hover"
                                             :fields="fieldsSelected"
-                                            :items="selectedMateriales"
+                                            :items="detalleNotaSalida"
                                             small
                                             responsive="sm">
                                             <template #cell(index)="row">
@@ -111,99 +98,6 @@
 
         </section>
         <!-- /.content -->
-        <!-- MODAL ADD MATERIAL DEPENDIENTE -->
-        <b-modal
-            id="modal-material-depende"
-            ref="modal-material-depende"
-            size="xl"
-            hide-footer
-            scrollable
-            title="Lista Productos Dependiente">
-            <div>
-                <div class="row mb-1">
-                    <!-- //filtros -->
-                    <div class="col-sm-3">
-                        <div class="btn-group">
-                        <span class="pt-2 mr-1">Mostrar </span>
-                        <b-form-select
-                            id="per-page-select"
-                            v-model="perPage"
-                            :options="pageOptions"
-                            size="sm"
-                        ></b-form-select>
-                        <span class="pt-2 ml-1"> Registros</span>
-                        </div>
-                    </div>
-                    <div class="col-sm-3 offset-sm-6 text-right">
-                        <div class="form-group row">
-                            <div class="col-sm-4"></div>
-                            <div class="col-sm-8">
-                                <input type="search"
-                                    class="form-control"
-                                    v-model="filter"
-                                    placeholder="Buscar"
-                                >
-                            </div>
-                        </div>
-                    </div>
-                    <!-- filtros table -->
-                </div>
-                <b-row>
-                    <div class="col-sm-12">
-                        <b-button size="sm" @click="clearSelected">DesSeleccionar Todo</b-button>
-                        <hr>
-                        <!-- Tabla -->
-                        <b-table
-                            class="table table-striped table-bordered table-hover"
-                            :fields="fields"
-                            :items="materialesDependen"
-                            :filter="filter"
-                            :current-page="currentPage"
-                            :per-page="perPage"
-                            :busy="isBusy"
-                            small
-                            selectable
-                            :select-mode="selectMode"
-                            ref="selectableTableMaterial"
-                            @filtered="onFiltered"
-                            responsive="sm"
-                            @row-selected="onRowSelected">
-                            <!-- Example scoped slot for select state illustrative purposes -->
-                            <template #cell(selected)="{ rowSelected }">
-                                <template v-if="rowSelected">
-                                <span aria-hidden="true">&check;</span>
-                                <span class="sr-only">Selected</span>
-                                </template>
-                                <template v-else>
-                                <span aria-hidden="true">&nbsp;</span>
-                                <span class="sr-only">Not selected</span>
-                                </template>
-                            </template>
-                            <template #table-busy>
-                                <div class="text-center text-danger my-2">
-                                <b-spinner class="align-middle"></b-spinner>
-                                <strong>Loading...</strong>
-                                </div>
-                            </template>
-                        </b-table>
-                    </div>
-                    <b-row>
-                        <div class="col-sm-8"></div>
-                        <div class="col-sm-4">
-                            <!-- Paginacion -->
-                            <b-pagination
-                                v-model="currentPage"
-                                :total-rows="totalRows"
-                                :per-page="perPage"
-                                align="fill"
-                                size="sm"
-                                class="my-0"
-                            ></b-pagination>
-                        </div>
-                    </b-row>
-                </b-row>
-            </div>
-        </b-modal> <!-- MODAL ADD MATERIAL DEPENDIENTE -->
     </div>
 </template>
 
@@ -217,17 +111,8 @@ import { atob } from '../../../../mixins/util';
         },
         data() {
             return {
-                // estado: true,
-                totalRows: 1,
-                currentPage: 1,
-                perPage: 50,
-                pageOptions: [5, 10, 15, 30, 50],
-                filter: null,
-                // ----
                 isBusy: false,
-                seGuarda: false,
-                selectMode: 'multi',
-                selectedMateriales: [],
+                detalleNotaSalida: [],
                 formData: {
                     codigo_nota: 'Nota-0001',
                     nombre: '',
@@ -236,7 +121,13 @@ import { atob } from '../../../../mixins/util';
                     materialesHijos: [],
                     codigoMaterialPadre: null,
                 },
-                material: {},
+                notaSalida: {
+                    id: 1,
+                    codigo_nota: 'Nota-0001',
+                    nombre: 'Pedido de Proyecto 1',
+                    fecha: '2021-01-06',
+                    usuario: 'Secretaria'
+                },
                 materialesDependen: [],
                 fields: [
                     // A virtual column that doesn't exist in items
@@ -246,13 +137,14 @@ import { atob } from '../../../../mixins/util';
 					{key:'categoria', label:'Categoria', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
                     {key:'unidad_medida', label:'Unidad Medida', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
 				],
+                // {"nro_material":"805595","codigo":3,"nombre":"Tubo SCH 10 4\" con costura ERW ASTM A795 IMPORTACI\u00d3N","id_stock":1,"cantidad":5}
                 fieldsSelected: [
                     // A virtual column that doesn't exist in items
                     {key:'index', label:'N°', class: 'text-center', thStyle: {width: '1%'}},
                     {key:'nro_material', label:'Codigo Material', class: 'text-center', thStyle: {width: '5%'}, sortable: true},
 					{key:'nombre', label:'Nombre', class: 'text-center', thStyle: {width: '20%'}, sortable: true},
-					{key:'categoria', label:'Categoria', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
-                    {key:'unidad_medida', label:'Unidad Medida', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
+					{key:'cantidad', label:'Cantidad', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
+                    // {key:'unidad_medida', label:'Unidad Medida', class: 'text-center', thStyle: {width: '8%'}, sortable: true},
 				],
 
                 errors: []
@@ -260,11 +152,11 @@ import { atob } from '../../../../mixins/util';
         },
         computed: {
             seGuardaForm() {
-                console.log( typeof this.selectedMateriales);
-                if( typeof this.selectedMateriales === "undefined" ){
+                console.log( typeof this.detalleNotaSalida);
+                if( typeof this.detalleNotaSalida === "undefined" ){
                     this.seGuarda = false;
                 }else{
-                    this.seGuarda = this.selectedMateriales.length > 0;
+                    this.seGuarda = this.detalleNotaSalida.length > 0;
                 }
                 return this.seGuarda;
             }
@@ -273,65 +165,17 @@ import { atob } from '../../../../mixins/util';
             getData() {
                 this.isBusy = true;
                 axiosClient.get(
-                    '/material/'+ this.desencrypt(this.$route.params.id) + '/show'
+                    '/nota_salida/'+ this.desencrypt(this.$route.params.id) + '/show'
                 ).then(response => {
                     let respuesta = response.data.data;
-                    // console.log(respuesta);
-                    this.material = respuesta.material;
+                    console.log(response.data);
+                    this.notaSalida = respuesta.notaSalida;
+                    this.detalleNotaSalida = respuesta.detalle;
                 }).catch(error => {
-                    // console.log(error);
+                    console.log(error);
                     alert(error);
                     // this.setErrorUsuario(error);
                 });
-                axiosClient.get(
-                    '/depende/'+ this.desencrypt(this.$route.params.id) + '/show'
-                ).then(response => {
-                    let respuesta = response.data.data;
-                    console.log(respuesta);
-                    this.selectedMateriales = respuesta.materiales;
-                    this.isBusy = false;
-                }).catch(error => {
-                    // console.log(error);
-                    alert(error);
-                    // this.setErrorUsuario(error);
-                });
-            },
-            getMateriales() {
-                this.isBusy = true;
-                const params = {
-                    page: 1,
-                    per_page: this.perPage,
-                    filter_key: this.filter
-                };
-                axiosClient.get(
-                    '/depende',
-                    {params}
-                ).then(response => {
-                    let respuesta = response.data.data;
-                    this.isBusy = false;
-                    console.log(respuesta);
-                    this.materialesDependen = respuesta.materiales;
-                    this.totalRows = respuesta.total;
-
-                }).catch(error => {
-                    // console.log(error);
-                    alert(error);
-                    // this.setErrorUsuario(error);
-                })
-                .finally(() => {
-                    // this.modalDestroyConfirmation = false;
-                    // console.log('finally request');
-                });
-            },
-            showModalDepepende(){
-                this.getMateriales();
-                this.$refs['modal-material-depende'].show()
-            },
-            onRowSelected(items){
-                this.selectedMateriales = items;
-            },
-            clearSelected(){
-                this.$refs.selectableTableMaterial.clearSelected();
             },
             storeMateriales() {
                 if( this.validarFormulario() ) {
@@ -348,15 +192,9 @@ import { atob } from '../../../../mixins/util';
                         this.formData)
                     .then((response) => {
                         console.log(response.data);
-                        this.$router.push({name: 'material-index'});
+                        this.$router.push({name: 'nota-salida-index'});
                     });
                 }
-            },
-            cargarFormData() {
-                this.selectedMateriales.forEach(material => {
-                    this.formData.materialesHijos.push({codigo: material.codigo});
-                });
-                this.formData.codigoMaterialPadre = this.desencrypt(this.$route.params.id);
             },
             validarFormulario(){
                 return true;
@@ -364,15 +202,9 @@ import { atob } from '../../../../mixins/util';
             desencrypt(value) {
                 return atob(value);
             },
-            onFiltered(filteredItems) {
-				// Trigger pagination to update the number of buttons/pages due to filtering
-				this.totalRows = filteredItems.length
-				this.currentPage = 1
-			},
-
         },
         watch: {
-            selectedMateriales: function(newValue, oldValue) {
+            detalleNotaSalida: function(newValue, oldValue) {
                 console.log(newValue);
                 console.log(oldValue);
             },

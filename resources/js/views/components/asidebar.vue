@@ -91,7 +91,6 @@
                         </li>
                     </ul>
                 </li>
-
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="nav-icon fas fa-chart-pie"></i>
@@ -132,6 +131,12 @@
                              </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'nota-compra-index' }" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Nota de Compra</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
                              <router-link :to="{ name: 'proveedor-index' }" class="nav-link">
                             <i class="far fa-circle nav-icon"></i>
                             <p>Proveedor</p>
@@ -151,7 +156,7 @@
                     <p>Documentation</p>
                     </a>
                 </li>
-                <li class="nav-header">LABELS</li>
+                <!-- <li class="nav-header">LABELS</li>
                 <li class="nav-item">
                     <a href="#" class="nav-link">
                     <i class="nav-icon far fa-circle text-danger"></i>
@@ -169,7 +174,7 @@
                     <i class="nav-icon far fa-circle text-info"></i>
                     <p>Informational</p>
                     </a>
-                </li>
+                </li> -->
                 </ul>
             </nav>
             <!-- /.sidebar-menu -->

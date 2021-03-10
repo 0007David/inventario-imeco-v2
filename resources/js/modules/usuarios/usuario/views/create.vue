@@ -34,7 +34,7 @@
                                     class="form-control"
                                     v-model="formData.id_rol">
                                     <option value="">Seleccione rol</option>
-                                    <option v-for="rol in roles" :value="rol.id">{{rol.nombre}}</option>
+                                    <option v-for="rol in roles" :key="rol.id" :value="rol.id">{{rol.nombre}}</option>
                                 </select>
                             </div>
                             <div class='form-group'>

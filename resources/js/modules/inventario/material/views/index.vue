@@ -32,6 +32,11 @@
                                     class="btn btn-primary">
                                     Nuevo
                                 </router-link>
+                                <router-link
+                                    :to="{ name: 'stock-index' }"
+                                    class="btn btn-primary">
+                                    Stock
+                                </router-link>
                             </div>
                             <!-- /.card-header -->
                             <div class="card-body">

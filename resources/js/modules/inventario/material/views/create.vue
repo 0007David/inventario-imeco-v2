@@ -154,10 +154,6 @@ import axiosClient from '../../../../utils/axiosClient';
                     // console.log(error);
                     alert(error);
                     // this.setErrorUsuario(error);
-                })
-                .finally(() => {
-                    // this.modalDestroyConfirmation = false;
-                    // console.log('finally request');
                 });
             },
             guardar() {
@@ -177,9 +173,7 @@ import axiosClient from '../../../../utils/axiosClient';
                         console.log(response.data);
                         this.$router.push({name: 'material-index'});
                     });
-
                 }
-
             },
             validarFormulario(){
                 return true;

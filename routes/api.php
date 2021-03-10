@@ -85,6 +85,7 @@ Route::post('/depende', 'DependeMaterialController@store')->name('depende-store'
 Route::get('/nota_salida', 'NotaSalidaController@index')->name('nota_salida');
 Route::get('/nota_salida/{id}/edit', 'NotaSalidaController@edit')->name('nota_salida-edit');
 Route::get('/nota_salida/create', 'NotaSalidaController@create')->name('nota_salida-create');
+Route::get('/nota_salida/{id}/show', 'NotaSalidaController@show')->name('nota_salida-show');
 Route::post('/nota_salida', 'NotaSalidaController@store')->name('nota_salida-store');
 Route::put('/nota_salida/{id}', 'NotaSalidaController@update')->name('nota_salida-update');
 Route::delete('/nota_salida/{id}', 'NotaSalidaController@destroy')->name('nota_salida-delete');
@@ -101,3 +102,9 @@ Route::delete('/stock/{id}', 'StockController@destroy')->name('stock-delete');
 Route::get('/planilla', 'PlanillaController@index')->name('planilla');;
 Route::get('/planilla/create', 'PlanillaController@create')->name('planilla-create');
 Route::post('/planilla', 'PlanillaController@store')->name('planilla-store');
+
+//Nota de Compra
+Route::get('/nota_compra', 'NotaCompraController@index')->name('nota_compra');
+Route::get('/nota_compra/create', 'NotaCompraController@create')->name('nota_compra-create');
+Route::get('/nota_compra/{id}/show', 'NotaCompraController@show')->name('nota_compra-show');
+Route::post('/nota_compra', 'NotaCompraController@store')->name('nota_compra-store');
