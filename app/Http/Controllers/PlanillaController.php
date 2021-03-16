@@ -33,21 +33,20 @@ class PlanillaController extends Controller
     public function create()
     {
         $response = array();
+        $response['data'] = [
+        ];
+        return response()->json($response);
+    
+    }
+
+    public function add($id)
+    {
+        $response = array();
         $categoria = Categoria::all();
         $material = Material::all();
         $response['data'] = [
             'categorias' => $categoria,
             'materiales'=> $material,
-        ];
-        return response()->json($response);
-    }
-
-    public function addMaterial($id)
-    {
-        $response = array();
-        $proveedor = Proveedor::find($id);
-        $response["data"] = [
-            "proveedores" => $proveedor,
         ];
         return response()->json($response);
     }
@@ -61,10 +60,11 @@ class PlanillaController extends Controller
     public function store(Request $request)
     {
         $response = array();
-        $planilla = new Proveedor();
-        $planilla->nombre = $request->nombre;
-        $planilla->direccion = $request->direccion;
-        $planilla->telefono = $request->telefono;
+        $planilla = new Planilla();
+        $planilla->codigo = $request->codigo;
+        $planilla->fecha = $request->fecha;
+        $planilla->estado = "Espera";
+        $planilla->id_user = 1;
         $planilla->created_at = date('Y-m-d H:i:s');
         $planilla->save();
         $response["data"] = [
@@ -92,7 +92,12 @@ class PlanillaController extends Controller
      */
     public function edit($id)
     {
-        //
+        $response = array();
+        $planilla = Planilla::find($id);
+        $response["data"] = [
+            "planillas" => $planilla,
+        ];
+        return response()->json($response);
     }
 
     /**
@@ -104,7 +109,17 @@ class PlanillaController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $response = array();
+        $planilla = Planilla::find($id);
+        $planilla->codigo = $request->codigo;
+        $planilla->fecha = $request->fecha;
+        $planilla->estado = $request->estado;
+        $planilla->updated_at = date('Y-m-d H:i:s');
+        $planilla->update();
+        $response["data"] = [
+            "planillas" => $planilla,
+        ];
+        return response()->json($response);
     }
 
     /**

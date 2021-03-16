@@ -3,11 +3,12 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
-use Material;
 
 class Planilla extends Model
 {
     protected $table = 'planilla';
+
+    protected $primaryKey = 'codigo';
 
     protected $hidden = [
         'remember_token',

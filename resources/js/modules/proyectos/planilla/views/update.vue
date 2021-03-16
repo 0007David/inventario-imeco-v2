@@ -3,7 +3,7 @@
         <div class='row justify-content-center'>
             <div class='col-md-6 offset-1'>
                 <div class='card'>
-                    <div class='card-header'>Modificar proveedor</div>
+                    <div class='card-header'>Modificar planilla</div>
                     <div class='card-body'>
                         <div class="alert alert-danger" v-if="errors.length">
                             <b>Terdapat kesalahan dalam input data:</b>
@@ -14,25 +14,29 @@
 
                         <form v-on:submit.prevent="modificar">
                             <div class='form-group'>
-                                <label htmlFor='nombre'>
-                                    Nombre
+                                <label htmlFor='codigo'>
+                                    Codigo
                                 </label>
-                                <input id="nombre" required type="text" class="form-control" v-model="formData.nombre">
-                            </div>
-                            <div class='form-group'>
-                                <label htmlFor='direccion'>
-                                    Direccion
-                                </label>
-                                <input required  id="direccion" type="text" class="form-control" v-model="formData.direccion">
+                                <input id="codigo" required type="text" class="form-control" v-model="formData.codigo">
                             </div>
                               <div class='form-group'>
-                                <label htmlFor='telefono'>
-                                    Telefono
-                                </label> <input required id="telefono" type="text" class="form-control" v-model="formData.telefono">
+                                <label htmlFor='fecha'>
+                                    Fecha
+                                </label> <input required id="fecha" type="text" class="form-control" v-model="formData.fecha">
                             </div>
                             <div class='form-group'>
+                                <label htmlFor='estado'>
+                                    Estado
+                                </label> <select id="estado"  class="form-control" v-model="formData.estado">
+                                        <option value="Espera">Espera</option>
+                                        <option value="Proceso">Proceso</option>
+                                        <option value="Compra">Compra</option>
+                                        </select>
+                            </div>
+                            
+                            <div class='form-group'>
                                 <router-link
-                                    :to="{ name: 'proveedor-index' }"
+                                    :to="{ name: 'planilla-index' }"
                                     class="btn btn-secondary">
                                     Cancelar
                                 </router-link>
@@ -62,10 +66,9 @@ export default {
     data() {
         return {
             formData: {
-                id: '',
-                nombre: '',
-                direccion: '',
-                telefono: ''
+                codigo: '',
+                fecha: '',
+                estado: ''
             },
             errors: []
         }
@@ -73,7 +76,7 @@ export default {
     methods: {
         getData() {
                 axiosClient.get(
-                    '/proveedor/'+ this.desencrypt(this.$route.params.id) + '/edit')
+                    '/planilla/'+ this.desencrypt(this.$route.params.id) + '/edit')
                 .then(response => {
                     // console.log(response);
                     let respuesta = response.data.data;
@@ -91,28 +94,27 @@ export default {
 
             },
             cargarData(data) {
-                this.formData.id = this.encrypt(data.proveedores.id);
-                this.formData.nombre = data.proveedores.nombre;
-                this.formData.direccion = data.proveedores.direccion;
-                this.formData.telefono = data.proveedores.telefono;
+                this.formData.codigo = data.planillas.codigo;
+                this.formData.fecha = data.planillas.fecha;
+                this.formData.estado = data.planillas.estado;
             },
             modificar() {
 
                 if( this.validarFormulario() ){
                     // console.log(this.formData);
-                    this.formData.id =  this.desencrypt(this.formData.id);
+                    //this.formData.codigo =  this.desencrypt(this.formData.codigo);
                     this.$swal.fire({
                         title: 'Success',
-                        text: "Se ha modificado el proveedor exitosamente",
+                        text: "Se ha modificado la planilla exitosamente",
                         icon: 'success',
                         timer: 1000
                     });
                     axiosClient.put(
-                        '/proveedor/' +this.desencrypt(this.$route.params.id),
+                        '/planilla/' +this.desencrypt(this.$route.params.id),
                         this.formData)
                     .then((response) => {
                         // console.log(response.data);
-                        this.$router.push({name: 'proveedor-index'});
+                        this.$router.push({name: 'planilla-index'});
                     });
                 }
             },

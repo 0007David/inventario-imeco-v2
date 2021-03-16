@@ -64,6 +64,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -74,10 +78,9 @@ __webpack_require__.r(__webpack_exports__);
   data: function data() {
     return {
       formData: {
-        id: '',
-        nombre: '',
-        direccion: '',
-        telefono: ''
+        codigo: '',
+        fecha: '',
+        estado: ''
       },
       errors: []
     };
@@ -86,7 +89,7 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData() {
       var _this = this;
 
-      _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/proveedor/' + this.desencrypt(this.$route.params.id) + '/edit').then(function (response) {
+      _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/planilla/' + this.desencrypt(this.$route.params.id) + '/edit').then(function (response) {
         // console.log(response);
         var respuesta = response.data.data;
 
@@ -99,27 +102,26 @@ __webpack_require__.r(__webpack_exports__);
       });
     },
     cargarData: function cargarData(data) {
-      this.formData.id = this.encrypt(data.proveedores.id);
-      this.formData.nombre = data.proveedores.nombre;
-      this.formData.direccion = data.proveedores.direccion;
-      this.formData.telefono = data.proveedores.telefono;
+      this.formData.codigo = data.planillas.codigo;
+      this.formData.fecha = data.planillas.fecha;
+      this.formData.estado = data.planillas.estado;
     },
     modificar: function modificar() {
       var _this2 = this;
 
       if (this.validarFormulario()) {
         // console.log(this.formData);
-        this.formData.id = this.desencrypt(this.formData.id);
+        //this.formData.codigo =  this.desencrypt(this.formData.codigo);
         this.$swal.fire({
           title: 'Success',
-          text: "Se ha modificado el proveedor exitosamente",
+          text: "Se ha modificado la planilla exitosamente",
           icon: 'success',
           timer: 1000
         });
-        _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].put('/proveedor/' + this.desencrypt(this.$route.params.id), this.formData).then(function (response) {
+        _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].put('/planilla/' + this.desencrypt(this.$route.params.id), this.formData).then(function (response) {
           // console.log(response.data);
           _this2.$router.push({
-            name: 'proveedor-index'
+            name: 'planilla-index'
           });
         });
       }
@@ -158,7 +160,7 @@ var render = function() {
       _c("div", { staticClass: "col-md-6 offset-1" }, [
         _c("div", { staticClass: "card" }, [
           _c("div", { staticClass: "card-header" }, [
-            _vm._v("Modificar proveedor")
+            _vm._v("Modificar planilla")
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "card-body" }, [
@@ -188,9 +190,9 @@ var render = function() {
               },
               [
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { htmlFor: "nombre" } }, [
+                  _c("label", { attrs: { htmlFor: "codigo" } }, [
                     _vm._v(
-                      "\n                                Nombre\n                            "
+                      "\n                                Codigo\n                            "
                     )
                   ]),
                   _vm._v(" "),
@@ -199,28 +201,28 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.nombre,
-                        expression: "formData.nombre"
+                        value: _vm.formData.codigo,
+                        expression: "formData.codigo"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { id: "nombre", required: "", type: "text" },
-                    domProps: { value: _vm.formData.nombre },
+                    attrs: { id: "codigo", required: "", type: "text" },
+                    domProps: { value: _vm.formData.codigo },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.formData, "nombre", $event.target.value)
+                        _vm.$set(_vm.formData, "codigo", $event.target.value)
                       }
                     }
                   })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { htmlFor: "direccion" } }, [
+                  _c("label", { attrs: { htmlFor: "fecha" } }, [
                     _vm._v(
-                      "\n                                Direccion\n                            "
+                      "\n                                Fecha\n                            "
                     )
                   ]),
                   _vm._v(" "),
@@ -229,52 +231,78 @@ var render = function() {
                       {
                         name: "model",
                         rawName: "v-model",
-                        value: _vm.formData.direccion,
-                        expression: "formData.direccion"
+                        value: _vm.formData.fecha,
+                        expression: "formData.fecha"
                       }
                     ],
                     staticClass: "form-control",
-                    attrs: { required: "", id: "direccion", type: "text" },
-                    domProps: { value: _vm.formData.direccion },
+                    attrs: { required: "", id: "fecha", type: "text" },
+                    domProps: { value: _vm.formData.fecha },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
-                        _vm.$set(_vm.formData, "direccion", $event.target.value)
+                        _vm.$set(_vm.formData, "fecha", $event.target.value)
                       }
                     }
                   })
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group" }, [
-                  _c("label", { attrs: { htmlFor: "telefono" } }, [
+                  _c("label", { attrs: { htmlFor: "estado" } }, [
                     _vm._v(
-                      "\n                                Telefono\n                            "
+                      "\n                                Estado\n                            "
                     )
                   ]),
                   _vm._v(" "),
-                  _c("input", {
-                    directives: [
-                      {
-                        name: "model",
-                        rawName: "v-model",
-                        value: _vm.formData.telefono,
-                        expression: "formData.telefono"
-                      }
-                    ],
-                    staticClass: "form-control",
-                    attrs: { required: "", id: "telefono", type: "text" },
-                    domProps: { value: _vm.formData.telefono },
-                    on: {
-                      input: function($event) {
-                        if ($event.target.composing) {
-                          return
+                  _c(
+                    "select",
+                    {
+                      directives: [
+                        {
+                          name: "model",
+                          rawName: "v-model",
+                          value: _vm.formData.estado,
+                          expression: "formData.estado"
                         }
-                        _vm.$set(_vm.formData, "telefono", $event.target.value)
+                      ],
+                      staticClass: "form-control",
+                      attrs: { id: "estado" },
+                      on: {
+                        change: function($event) {
+                          var $$selectedVal = Array.prototype.filter
+                            .call($event.target.options, function(o) {
+                              return o.selected
+                            })
+                            .map(function(o) {
+                              var val = "_value" in o ? o._value : o.value
+                              return val
+                            })
+                          _vm.$set(
+                            _vm.formData,
+                            "estado",
+                            $event.target.multiple
+                              ? $$selectedVal
+                              : $$selectedVal[0]
+                          )
+                        }
                       }
-                    }
-                  })
+                    },
+                    [
+                      _c("option", { attrs: { value: "Espera" } }, [
+                        _vm._v("Espera")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Proceso" } }, [
+                        _vm._v("Proceso")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Compra" } }, [
+                        _vm._v("Compra")
+                      ])
+                    ]
+                  )
                 ]),
                 _vm._v(" "),
                 _c(
@@ -285,7 +313,7 @@ var render = function() {
                       "router-link",
                       {
                         staticClass: "btn btn-secondary",
-                        attrs: { to: { name: "proveedor-index" } }
+                        attrs: { to: { name: "planilla-index" } }
                       },
                       [
                         _vm._v(

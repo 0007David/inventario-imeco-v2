@@ -13,6 +13,7 @@
                         </div>
 
                         <form v-on:submit.prevent="guardar">
+                            
                             <div class='form-group'>
                                 <label htmlFor='nombre'>
                                     Nombre

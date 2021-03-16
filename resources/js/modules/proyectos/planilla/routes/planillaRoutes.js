@@ -25,21 +25,12 @@ const planillaRoutes = [
         }
     },
 	//////mis rutas
-	{
-        path: '/planilla/:id/editmaterial',
-        name: 'planilla-edit-material',
-        component: () => import ('../views/update.vue'),
-        meta: {
-            title: title + ' | ModificarMaterial'
-        }
-    },
-
-	{
+    {
         path: '/planilla/:id/addmaterial',
-        name: 'planilla-add-material',
-        component: () => import ('../views/update.vue'),
+        name: 'planilla-add',
+        component: () => import ('../views/detalle.vue'),
         meta: {
-            title: title + ' | AdicionarMaterial'
+            title: title + ' | Modificar'
         }
     },
 

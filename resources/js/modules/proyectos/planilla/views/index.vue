@@ -46,7 +46,8 @@
                                                     <tr role="row">
                                                         <th>Codigo</th>
                                                         <th>Fecha</th>
-                                                        <th>Ver</th>
+                                                        <th>Estado</th>
+                                                        <th>Control</th>
                                                         <th>Editar</th>
                                                         <th>Eliminar</th>
                                                     </tr>
@@ -56,7 +57,19 @@
                                                     <tr role="row" v-for="(planilla, index) in planillas" :key="planilla.codigo">
                                                         <td> {{ planilla.codigo }}</td>
                                                         <td> {{ planilla.fecha }} </td>
+                                                           <td> {{ planilla.estado }} </td>
                                                         <td>
+                                                            <router-link
+                                                                class="btn btn-warning"
+                                                                :to="'/planilla/' + encrypt(planilla.codigo) + '/edit'"
+                                                                data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="Editar">
+                                                                <i class="fa fa-edit"></i>
+                                                            </router-link>
+                                                        </td>
+
+                                                         <td>
                                                             <router-link
                                                                 class="btn btn-warning"
                                                                 :to="'/planilla/' + encrypt(planilla.codigo) + '/edit'"
@@ -104,8 +117,7 @@ export default {
     },
     data() {
         return {
-            planillas: [],
-            materiales: []
+            planillas: []
         }
     },
     methods: {
@@ -115,7 +127,7 @@ export default {
                     let respuesta = response.data.data;
                     this.planillas = respuesta.planillas;
                 }).catch(error => {
-                    // console.log(error);
+                    console.log(error);
                     alert(error);
                     // this.setErrorAlmacen(error);
                 })
