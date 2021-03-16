@@ -13,6 +13,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/login', 'LoginController@index');
+
 Route::get('/{any}', function () {
     return view('app');
 })->where('any', '.*');

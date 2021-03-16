@@ -8,6 +8,10 @@ class Categoria extends Model
 {
     protected $table = 'categoria';
 
+    protected $fillable = [
+        'nombre',
+    ];
+
     protected $hidden = [
         'remember_token',
     ];

@@ -1,7 +1,7 @@
 let title = "Usuario";
 const usuarioRoutes = [
 	{
-		path: '/usuario',
+		path: '/usuarios',
 		name: 'usuario-index',
 		component: () => import ('../views/index.vue'),
 		meta: {

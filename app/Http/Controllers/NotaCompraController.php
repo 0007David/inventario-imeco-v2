@@ -60,7 +60,7 @@ class NotaCompraController extends Controller
         $notaCompra->created_at = date('Y-m-d H:i:s');
         $notaCompra->id_proveedor = $request->id_proveedor;
         $notaCompra->montototal = $request->montototal;
-        $notaCompra->id_user = 2;
+        $notaCompra->id_user = $request->id_user;
         $value = $notaCompra->save();
         if( $value ){
             $materialesDetalle = $request->detalleNotaCompra;

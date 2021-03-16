@@ -311,17 +311,17 @@ import { atob } from '../../../../mixins/util';
                         icon: 'success',
                         timer: 1000
                     });
-                    // axiosClient.post(
-                    //     '/stock',
-                    //     this.formData)
-                    // .then((response) => {
-                    //     console.log(response.data);
-                    //     this.$router.push({name: 'stock-index'});
-                    // }).catch(error => {
-                    //     console.log(error);
-                    //     alert(error);
-                    //     // this.setErrorUsuario(error);
-                    // });
+                    axiosClient.post(
+                        '/stock',
+                        this.formData)
+                    .then((response) => {
+                        console.log(response.data);
+                        this.$router.push({name: 'stock-index'});
+                    }).catch(error => {
+                        console.log(error);
+                        alert(error);
+                        // this.setErrorUsuario(error);
+                    });
                 }
             },
             cargarFormData() {

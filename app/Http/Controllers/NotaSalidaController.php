@@ -52,7 +52,7 @@ class NotaSalidaController extends Controller
         $notaSalida->nombre = $request->nombre;
         $notaSalida->fecha = $request->fecha;
         $notaSalida->created_at = date('Y-m-d H:i:s');
-        $notaSalida->id_user = 2;
+        $notaSalida->id_user = $request->id_user;
         $value = $notaSalida->save();
         if( $value ){
             $materialesDetalle = $request->detalleNotaSalida;

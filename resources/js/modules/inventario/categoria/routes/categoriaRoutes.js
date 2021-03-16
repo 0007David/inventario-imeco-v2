@@ -1,7 +1,7 @@
 let title = "Categoria";
 const categoriaRoutes = [
 	{
-		path: '/categoria',
+		path: '/categorias',
 		name: 'categoria-index',
 		component: () => import ('../views/index.vue'),
 		meta: {

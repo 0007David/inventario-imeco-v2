@@ -44,4 +44,17 @@ class User extends Authenticatable
     {
         return $this->belongsTo('App\Rol', 'id_rol');
     }
+
+    /**
+     * Get the Proyecto.
+     */
+    public function proyecto()
+    {
+        return $this->hasOne('App\Proyecto', 'id_user');
+    }
+
+    public static function findByEmail($email)
+    {
+        return static::where('email',compact('email'))->first();
+    }
 }

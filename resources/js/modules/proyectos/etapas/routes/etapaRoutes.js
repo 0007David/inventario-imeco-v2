@@ -1,7 +1,7 @@
 let title = "Etapas";
 const etapaRoutes = [
 	{
-		path: '/etapa',
+		path: '/etapas',
 		name: 'etapa-index',
 		component: () => import ('../views/index.vue'),
 		meta: {
@@ -16,17 +16,9 @@ const etapaRoutes = [
 		title: title + ' | Nuevo'
 		}
 	},
-	{
-        path: '/etapa/:id/edit',
-        name: 'etapa-edit',
-        component: () => import ('../views/update.vue'),
-        meta: {
-            title: title + ' | Modificar'
-        }
-    },
     {
-        path: '/etapa/board',
-        name: 'etapa-board',
+        path: '/etapa/:id/show',
+        name: 'etapa-show',
         component: () => import ('../views/board.vue'),
         meta: {
             title: title + ' | Board'

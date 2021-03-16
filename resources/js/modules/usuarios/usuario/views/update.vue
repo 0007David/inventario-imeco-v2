@@ -34,7 +34,7 @@
                                     class="form-control"
                                     v-model="formData.id_rol">
                                     <option value="">Seleccione rol</option>
-                                    <option v-for="rol in roles" :value="rol.id">{{rol.nombre}}</option>
+                                    <option v-for="rol in roles" :value="rol.id" :key="rol.id">{{rol.nombre}}</option>
                                 </select>
                             </div>
                             <div class='form-group'>
@@ -80,7 +80,7 @@
 
 <script>
 import axiosClient from '../../../../utils/axiosClient';
-import { atob } from '../../../../mixins/util';
+import { atob, btoa } from '../../../../mixins/util';
     export default {
         name: 'update',
         created() {

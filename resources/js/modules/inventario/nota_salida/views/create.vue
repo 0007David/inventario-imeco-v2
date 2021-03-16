@@ -340,7 +340,10 @@ import { atob } from '../../../../mixins/util';
             },
             cargarFormData() {
                 this.selectedMateriales.forEach(material => {
-                    this.formData.detalleNotaSalida.push({id_stock: material.id_stock, cantidad: material.stock_disponible});
+                    this.formData.detalleNotaSalida.push({
+                        id_stock: material.id_stock,
+                        cantidad: material.stock_disponible
+                    });
                 });
             },
             validarFormulario(){
@@ -354,7 +357,6 @@ import { atob } from '../../../../mixins/util';
 				this.totalRows = filteredItems.length
 				this.currentPage = 1
 			},
-
         },
         watch: {
             selectedMateriales: function(newValue, oldValue) {

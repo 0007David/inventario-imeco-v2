@@ -1,7 +1,7 @@
 let title = "Almacen";
 const almacenRoutes = [
 	{
-		path: '/almacen',
+		path: '/almacenes',
 		name: 'almacen-index',
 		component: () => import ('../views/index.vue'),
 		meta: {

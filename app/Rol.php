@@ -28,6 +28,8 @@ class Rol extends Model
      * @var array
      */
     protected $hidden = [
+        'created_at',
+        'updated_at',
         'remember_token',
     ];
 }

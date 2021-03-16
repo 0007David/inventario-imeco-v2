@@ -1,7 +1,7 @@
 let title = "Proveedor";
 const proveedorRoutes = [
 	{
-		path: '/proveedor',
+		path: '/proveedores',
 		name: 'proveedor-index',
 		component: () => import ('../views/index.vue'),
 		meta: {

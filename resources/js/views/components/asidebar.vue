@@ -21,12 +21,12 @@
                 <!-- Add icons to the links using the .nav-icon class
                     with font-awesome or any other icon font library -->
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link active">
+                    <router-link :to="{ name: '/home' }" class="nav-link active">
                     <i class="nav-icon fas fa-tachometer-alt"></i>
                     <p>
                         Dashboard
                     </p>
-                    </a>
+                    </router-link>
 
                 </li>
                 <li class="nav-item">
@@ -40,7 +40,7 @@
                     </a>
                     <ul class="nav nav-treeview">
                         <li class="nav-item">
-                            <router-link :to="{ name: 'etapa-index' }" class="nav-link">
+                            <router-link :to="{ name: 'proyecto-index' }" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Proyecto</p>
                             </router-link>
