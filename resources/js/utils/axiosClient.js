@@ -4,7 +4,7 @@ import urlBackend from './const';
 console.log(urlBackend);
 
 const axiosClient = axios.create({
-    baseURL: urlBackend + '/api',
+    baseURL: '/api',
 });
 
 export default axiosClient;

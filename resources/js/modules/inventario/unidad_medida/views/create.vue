@@ -13,14 +13,14 @@
                         </div>
 
                         <form v-on:submit.prevent="guardar">
-                            
+
                             <div class='form-group'>
                                 <label htmlFor='nombre'>
                                     Nombre
                                 </label>
                                 <input id="nombre" required type="text" class="form-control" v-model="formData.nombre">
                             </div>
-                        
+
                             <div class='form-group'>
                                 <router-link
                                     :to="{ name: 'unidadmedida-index' }"

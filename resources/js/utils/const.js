@@ -1,3 +1,3 @@
-const urlBackend = process.env.MIX_URL_API;
+const urlBackend = process.env.APP_URL;
 
 export { urlBackend };
