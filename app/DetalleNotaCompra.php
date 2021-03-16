@@ -8,8 +8,6 @@ class DetalleNotaCompra extends Model
 {
     protected $table = 'detalle_compra';
 
-    protected $primaryKey = 'id_detallecompra';
-
     protected $fillable = [
         'id_notacompra',
         'cod_material',

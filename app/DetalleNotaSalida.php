@@ -8,7 +8,6 @@ class DetalleNotaSalida extends Model
 {
     protected $table = 'detalle_notasalida';
 
-
     protected $fillable = [
         'id_stock',
         'id_notasalida',
