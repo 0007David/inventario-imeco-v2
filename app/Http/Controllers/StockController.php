@@ -25,7 +25,7 @@ class StockController extends Controller
         $sql = "SELECT st.id as id_stock, al.nombre as almacen,
                 ma.nro_material, ma.nombre, ca.nombre as categoria,
                 (st.cantidad + st.cantidad_anterior) as cant_stock, st.fecha_vencimiento,
-                ma.cantidad_max, ((st.cantidad + st.cantidad_anterior) - (SELECT ifnull(SUM(de.cantidad),0)
+                ma.cantidad_max, ((st.cantidad + st.cantidad_anterior) - (SELECT NULLIF(SUM(de.cantidad),0)
                     from detalle_notasalida de where de.id_stock = st.id)) as  stock_disponible
             FROM material ma
                 inner join stock st on st.cod_material = ma.codigo
@@ -49,6 +49,7 @@ class StockController extends Controller
     /**
      * Show the form for creating a new resource.
      * Lista de Materiales que van a formar parte de la Existentes en Stock
+     * Nota mysql = IFNULL  pgsql = NULLIF
      * @return \Illuminate\Http\Response
      */
     public function create(Request $request)
@@ -63,7 +64,7 @@ class StockController extends Controller
         $sql = "SELECT de.id_notacompra, ma.codigo,
             ma.nro_material, ma.nombre, ca.nombre as categoria,
             de.cantidad, de.precio, un.nombre as unidad_medida,
-            ifnull(de.remember_token,'') as fecha_venc, ifnull(de.remember_token,'') as id_almacen
+            NULLIF(de.remember_token,'') as fecha_venc, NULLIF(de.remember_token,'') as id_almacen
         FROM detalle_compra de
             inner join nota_compra nota on nota.id = de.id_notacompra
             inner join material ma on ma.codigo = de.cod_material
@@ -134,7 +135,7 @@ class StockController extends Controller
         $sql = "SELECT st.id as id_stock, al.nombre as almacen,
                 ma.nro_material, ma.nombre, ca.nombre as categoria,
                 st.cantidad as cant_stock, st.fecha_vencimiento,
-                ma.cantidad_max, (st.cantidad - (SELECT ifnull(SUM(de.cantidad),0)
+                ma.cantidad_max, (st.cantidad - (SELECT NULLIF(SUM(de.cantidad),0)
                     from detalle_notasalida de where de.id_stock = st.id)) as  stock_disponible
             FROM material ma
                 inner join stock st on st.cod_material = ma.codigo

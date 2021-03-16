@@ -28,9 +28,14 @@ $(document).ready(function(){
         }).then((response) => response.json())
             .then(function (myJson) {
                 // sessionStorage.setItem('session', JSON.stringify(myJson.login));
-                localStorage.setItem('session', JSON.stringify(myJson.login));
-                console.log(myJson);
-                window.location.href = '/home';
+                if( typeof myJson.login !== 'undefined'){
+                    localStorage.setItem('session', JSON.stringify(myJson.login));
+                    console.log(myJson);
+                    window.location.href = '/home';
+                }else{
+                    console.log('No login');
+                    window.location.href = '/login';
+                }
             })
             .catch(function (response) {
                 console.log('respuesta error', response)
