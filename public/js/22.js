@@ -129,7 +129,7 @@ __webpack_require__.r(__webpack_exports__);
         nombre: '',
         precio: '',
         descripcion: '',
-        es_padre: '',
+        es_padre: false,
         id_unidad: '',
         id_categoria: ''
       },
@@ -184,7 +184,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this2 = this;
 
       if (this.validarFormulario()) {
-        // console.log(this.formData);
+        console.log(this.formData);
         this.$swal.fire({
           title: 'Success',
           text: "Se ha creado exitosamente",

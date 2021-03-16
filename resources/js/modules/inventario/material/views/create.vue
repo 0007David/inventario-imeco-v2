@@ -118,7 +118,7 @@ import axiosClient from '../../../../utils/axiosClient';
                     nombre: '',
                     precio: '',
                     descripcion: '',
-                    es_padre: '',
+                    es_padre: false,
                     id_unidad: '',
                     id_categoria: '',
                 },
@@ -159,7 +159,7 @@ import axiosClient from '../../../../utils/axiosClient';
             guardar() {
 
                 if( this.validarFormulario() ){
-                    // console.log(this.formData);
+                    console.log(this.formData);
                     this.$swal.fire({
                         title: 'Success',
                         text: "Se ha creado exitosamente",
