@@ -103,8 +103,8 @@ import axiosClient from '../../../../utils/axiosClient';
                     let respuesta = response.data.data;
                     this.roles = respuesta.roles;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

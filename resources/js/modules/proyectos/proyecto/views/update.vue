@@ -120,7 +120,8 @@ import { atob, btoa } from '../../../../mixins/util';
                     this.cargarData(respuesta);
                 }).catch(error => {
                     console.log(error);
-                    alert(error);
+                    console.log(error.message);
+                    // alert(error);
                     // this.setErrorProyecto(error);
                 });
 

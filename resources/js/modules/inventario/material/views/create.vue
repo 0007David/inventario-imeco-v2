@@ -151,8 +151,8 @@ import axiosClient from '../../../../utils/axiosClient';
                     this.unidadesMedidas = respuesta.unidadesMedidas;
                     this.categorias = respuesta.categorias;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 });
             },

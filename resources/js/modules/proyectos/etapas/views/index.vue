@@ -136,8 +136,8 @@ import { btoa } from '../../../../mixins/util';
                     let respuesta = response.data.data;
                     this.etapas = respuesta.etapas;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorEtapa(error);
                 })
                 .finally(() => {

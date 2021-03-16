@@ -81,8 +81,8 @@ export default {
                     this.cargarData(respuesta);
                 })
                 .catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

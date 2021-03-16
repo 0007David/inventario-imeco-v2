@@ -53,7 +53,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    <tr role="row" v-for="(almacen, index) in almacenes">
+                                                    <tr role="row" v-for="(almacen, index) in almacenes" :key="index">
                                                         <td> {{ index+1 }}</td>
                                                         <td> {{ almacen.nombre }} </td>
                                                         <td> {{ almacen.ubicacion }} </td>
@@ -124,8 +124,8 @@ export default {
                     let respuesta = response.data.data;
                     this.almacenes = respuesta.almacenes;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorAlmacen(error);
                 })
                 .finally(() => {

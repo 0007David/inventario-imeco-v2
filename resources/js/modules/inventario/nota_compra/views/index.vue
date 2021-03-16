@@ -129,8 +129,8 @@ import { btoa } from '../../../../mixins/util';
                     console.log(respuesta);
                     this.notaCompras = respuesta.notaCompras;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

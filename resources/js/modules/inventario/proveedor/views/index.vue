@@ -126,8 +126,9 @@ export default {
                     let respuesta = response.data.data;
                     this.proveedores = respuesta.proveedores;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    console.log(error.message);
+                    // alert(error);
                     // this.setErrorAlmacen(error);
                 })
                 .finally(() => {
@@ -136,7 +137,7 @@ export default {
                 });
 
         },
-        
+
         eliminarProveedor(index, id) {
             let proveedor = this.getProveedor(id);
                 this.$swal.fire({

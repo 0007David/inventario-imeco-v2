@@ -53,7 +53,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    <tr scope="row" v-for="(rol, index) in roles">
+                                                    <tr scope="row" v-for="(rol, index) in roles" :key="index">
 
                                                         <td>{{ index+1 }}</td>
                                                         <td>{{rol.nombre}}</td>
@@ -124,8 +124,8 @@ import { btoa } from '../../../../mixins/util';
                     let respuesta = response.data.data;
                     this.roles = respuesta.roles;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

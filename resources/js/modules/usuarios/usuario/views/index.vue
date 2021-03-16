@@ -131,8 +131,8 @@ import { btoa } from '../../../../mixins/util';
                     this.usuarios = respuesta.usuarios;
                     this.roles = respuesta.roles;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

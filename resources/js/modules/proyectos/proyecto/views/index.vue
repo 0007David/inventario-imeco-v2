@@ -118,8 +118,8 @@ import { btoa } from '../../../../mixins/util';
                     let respuesta = response.data.data;
                     this.proyectos = respuesta.proyectos;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorProyecto(error);
                 })
                 .finally(() => {

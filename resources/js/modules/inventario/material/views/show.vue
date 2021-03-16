@@ -312,8 +312,8 @@ import { atob } from '../../../../mixins/util';
                     // console.log(respuesta);
                     this.material = respuesta.material;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 });
                 axiosClient.get(
@@ -324,8 +324,8 @@ import { atob } from '../../../../mixins/util';
                     this.selectedMateriales = respuesta.materiales;
                     this.isBusy = false;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 });
             },
@@ -347,8 +347,8 @@ import { atob } from '../../../../mixins/util';
                     this.totalRows = respuesta.total;
 
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

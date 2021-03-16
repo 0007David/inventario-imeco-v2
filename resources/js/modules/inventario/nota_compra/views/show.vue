@@ -160,7 +160,7 @@ import { atob } from '../../../../mixins/util';
                     this.detalleNotaCompra = respuesta.detalle;
                 }).catch(error => {
                     console.log(error);
-                    alert(error);
+                    // alert(error);
                 });
             },
             desencrypt(value) {

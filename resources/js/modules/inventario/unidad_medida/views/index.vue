@@ -122,8 +122,8 @@ export default {
                     let respuesta = response.data.data;
                     this.unidadmedidas = respuesta.unidadmedidas;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorAlmacen(error);
                 })
                 .finally(() => {
@@ -132,7 +132,7 @@ export default {
                 });
 
         },
-        
+
         eliminarUnidadMedida(index, id) {
             let unidad = this.getUnidadMedida(id);
                 this.$swal.fire({

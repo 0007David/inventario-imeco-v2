@@ -156,8 +156,8 @@ import { atob } from '../../../../mixins/util';
                     this.unidadesMedidas = respuesta.unidadesMedidas;
                     this.categorias = respuesta.categorias;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

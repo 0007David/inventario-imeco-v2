@@ -122,8 +122,8 @@ export default {
                     let respuesta = response.data.data;
                     this.categorias = respuesta.categorias;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorAlmacen(error);
                 })
                 .finally(() => {
@@ -132,7 +132,7 @@ export default {
                 });
 
         },
-        
+
         eliminarCategoria(index, id) {
             let unidad = this.getCategoria(id);
                 this.$swal.fire({

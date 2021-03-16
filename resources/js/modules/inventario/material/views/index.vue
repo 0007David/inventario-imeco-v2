@@ -204,7 +204,7 @@ import { btoa } from '../../../../mixins/util';
                     this.isBusy = false;
                 }).catch(error => {
                     console.log(error);
-                    alert(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 })
                 .finally(() => {

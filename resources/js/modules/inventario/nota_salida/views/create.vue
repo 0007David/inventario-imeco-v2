@@ -297,8 +297,8 @@ import { atob } from '../../../../mixins/util';
                     this.totalRows = respuesta.total;
 
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 });
             },
@@ -333,7 +333,7 @@ import { atob } from '../../../../mixins/util';
                         this.$router.push({name: 'nota-salida-index'});
                     }).catch(error => {
                     console.log(error);
-                    alert(error);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 });
                 }

@@ -115,8 +115,8 @@ import axiosClient from '../../../../utils/axiosClient';
                     let respuesta = response.data.data;
                     this.usuarios = respuesta.usuarios;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorProyecto(error);
                 })
                 .finally(() => {

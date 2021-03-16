@@ -89,6 +89,10 @@ import axiosClient from '../../../../utils/axiosClient';
                     .then((response) => {
                         // console.log(response.data);
                         this.$router.push({name: 'almacen-index'});
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        console.log(error.message);
                     });
 
                 }

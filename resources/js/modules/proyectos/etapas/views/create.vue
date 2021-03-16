@@ -131,8 +131,8 @@ import axiosClient from '../../../../utils/axiosClient';
                     let respuesta = response.data.data;
                     this.proyectos = respuesta.proyectos;
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorEtapa(error);
                 });
 
@@ -145,7 +145,7 @@ import axiosClient from '../../../../utils/axiosClient';
                         this.etapas = respuesta.etapas;
                     }).catch(error => {
                         console.log(error);
-                        alert(error);
+                        // alert(error);
                         // this.setErrorEtapa(error);
                     });
 

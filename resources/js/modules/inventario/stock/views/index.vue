@@ -197,8 +197,9 @@ import axiosClient from '../../../../utils/axiosClient';
                     this.totalRows = respuesta.total;
 
                 }).catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    console.log(error.message);
+                    // alert(error);
                     // this.setErrorUsuario(error);
                 });
             },

@@ -71,8 +71,12 @@ import axiosClient from '../../../../utils/axiosClient';
                         '/unidadmedida',
                         this.formData)
                     .then((response) => {
-                        // console.log(response.data);
+                        console.log(response.data);
                         this.$router.push({name: 'unidadmedida-index'});
+                    }).catch(error => {
+                        console.log(error);
+                        // alert(error);
+                        // this.setErrorAlmacen(error);
                     });
 
                 }

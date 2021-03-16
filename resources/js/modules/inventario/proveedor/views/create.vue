@@ -82,8 +82,11 @@ import axiosClient from '../../../../utils/axiosClient';
                         '/proveedor',
                         this.formData)
                     .then((response) => {
-                        // console.log(response.data);
+                        console.log(response.data);
                         this.$router.push({name: 'proveedor-index'});
+                    }).catch(error => {
+                        console.log(error);
+                        console.log(error.message);
                     });
 
                 }

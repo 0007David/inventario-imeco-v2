@@ -71,8 +71,8 @@ import { btoa, atob } from '../../../../mixins/util';
                     this.cargarDatos(respuesta);
                 })
                 .catch(error => {
-                    // console.log(error);
-                    alert(error);
+                    console.log(error);
+                    // alert(error);
                     // this.setErrorRol(error);
                 })
                 .finally(() => {
