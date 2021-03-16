@@ -30,7 +30,7 @@ $(document).ready(function(){
                 // sessionStorage.setItem('session', JSON.stringify(myJson.login));
                 localStorage.setItem('session', JSON.stringify(myJson.login));
                 console.log(myJson);
-                window.location.href = '/material';
+                window.location.href = '/home';
             })
             .catch(function (response) {
                 console.log('respuesta error', response)

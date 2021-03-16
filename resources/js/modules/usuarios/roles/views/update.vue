@@ -50,13 +50,13 @@ import { btoa, atob } from '../../../../mixins/util';
     export default {
         name: 'update',
         created() {
-
+            this.getData();
         },
         data() {
             return {
-                rol: {
+                formData: {
                     id: '',
-                    name: '',
+                    nombre: '',
                 },
                 errors: []
             }
@@ -82,7 +82,7 @@ import { btoa, atob } from '../../../../mixins/util';
             },
             cargarDatos( data ) {
                 this.formData.id = this.encrypt(data.rol.id);
-                this.formData.nomre = data.rol.nombre;
+                this.formData.nombre = data.rol.nombre;
             },
             modificar() {
 

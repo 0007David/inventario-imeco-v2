@@ -15,4 +15,9 @@ class UnidadMedida extends Model
     protected $hidden = [
         'remember_token',
     ];
+
+    public function materiales(){
+
+    	return $this->hasMany('App\Material', 'id_unidad', 'id');
+    }
 }

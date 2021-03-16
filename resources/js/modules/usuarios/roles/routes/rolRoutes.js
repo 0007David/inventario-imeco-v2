@@ -17,7 +17,7 @@ const rolRoutes = [
 		}
 	},
 	{
-        path: '/rol/:id/modificar',
+        path: '/rol/:id/edit',
         name: 'rol-modificar',
         component: () => import ('../views/update.vue'),
         meta: {

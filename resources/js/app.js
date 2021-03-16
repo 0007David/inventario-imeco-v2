@@ -33,11 +33,11 @@ const router = new VueRouter({
     routes: routes
 });
 router.beforeEach(function (to, from, next) {
-        if (to.name !== 'login' && !isAuth())
-            window.location.href = '/login';
-        else
-            next();
-    });
+    if (to.name !== 'login' && !isAuth())
+        window.location.href = '/login';
+    else
+        next();
+});
 const app = new Vue(
     Vue.util.extend({ router },
     App)

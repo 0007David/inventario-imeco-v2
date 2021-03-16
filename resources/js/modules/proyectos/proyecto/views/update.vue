@@ -82,9 +82,6 @@
                             </div>
                         </form>
                     </div>
-                    <div class="row">
-                        <pre>{{formData}}</pre>
-                    </div>
                 </div>
             </div>
         </div>

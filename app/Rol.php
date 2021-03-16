@@ -32,4 +32,9 @@ class Rol extends Model
         'updated_at',
         'remember_token',
     ];
+
+    public function users(){
+
+    	return $this->hasMany('App\User', 'id_rol', 'id');
+    }
 }

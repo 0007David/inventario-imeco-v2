@@ -23,4 +23,15 @@ class Material extends Model
     protected $hidden = [
         'remember_token',
     ];
+
+    public function categoria() {
+
+    	return $this->belongsTo('App\Categoria', 'id_categoria');
+    }
+
+    public function unidadmedida() {
+
+    	return $this->belongsTo('App\UnidadMedida', 'id_unidad');
+    }
+
 }

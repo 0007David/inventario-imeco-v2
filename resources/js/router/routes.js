@@ -14,8 +14,8 @@ const routes = [
         component: () => import ('./../views/home/home.vue'),
     },
     {
-        name: '/home',
-        path: '/',
+        name: 'home',
+        path: '/home',
         component: () => import ('./../views/home/home.vue'),
     },
     ...moduleUsuariosRoutes,
@@ -24,21 +24,14 @@ const routes = [
     {
         path: '*',
         beforeEnter:  function (to, from, next) {
-            if (to.name !== 'login' && !isAuth()) {
-                // console.log('no login');
-                window.location.href = '/notFount';
-            } else if(to.name !== 'login' && isAuth()){
+            // console.log('Route', to, from, next);
+            if(isAuth() &&  to.name !== 'login')
                 window.location.href = '/login';
-            }else{
+            else
                 next();
-            }
 
         },
     },
-    // router.beforeEach((to, from, next) => {
-    //     if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
-    //     else next()
-    //   })
 ];
 
 export default routes;
