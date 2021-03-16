@@ -87,11 +87,6 @@
                                         </b-table>
                                     </div>
                                 </b-row>
-                                <b-row>
-                                    <pre>
-                                        {{selectedMateriales}}
-                                    </pre>
-                                </b-row>
                             </div>
                             <!-- /.card-body -->
                         </form>
