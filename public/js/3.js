@@ -393,8 +393,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
 
         _this.material = respuesta.material;
       })["catch"](function (error) {
-        // console.log(error);
-        alert(error); // this.setErrorUsuario(error);
+        console.log(error); // alert(error);
+        // this.setErrorUsuario(error);
       });
       _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].get('/depende/' + this.desencrypt(this.$route.params.id) + '/show').then(function (response) {
         var respuesta = response.data.data;
@@ -402,8 +402,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         _this.selectedMateriales = respuesta.materiales;
         _this.isBusy = false;
       })["catch"](function (error) {
-        // console.log(error);
-        alert(error); // this.setErrorUsuario(error);
+        console.log(error); // alert(error);
+        // this.setErrorUsuario(error);
       });
     },
     getMateriales: function getMateriales() {
@@ -424,8 +424,8 @@ function _typeof(obj) { "@babel/helpers - typeof"; if (typeof Symbol === "functi
         _this2.materialesDependen = respuesta.materiales;
         _this2.totalRows = respuesta.total;
       })["catch"](function (error) {
-        // console.log(error);
-        alert(error); // this.setErrorUsuario(error);
+        console.log(error); // alert(error);
+        // this.setErrorUsuario(error);
       })["finally"](function () {// this.modalDestroyConfirmation = false;
         // console.log('finally request');
       });
@@ -1261,28 +1261,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ "./resources/js/utils/const.js");
-
 
 var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: _const__WEBPACK_IMPORTED_MODULE_1__["default"] + '/api'
+  baseURL: '/api'
 });
 /* harmony default export */ __webpack_exports__["default"] = (axiosClient);
-
-/***/ }),
-
-/***/ "./resources/js/utils/const.js":
-/*!*************************************!*\
-  !*** ./resources/js/utils/const.js ***!
-  \*************************************/
-/*! exports provided: urlBackend */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "urlBackend", function() { return urlBackend; });
-var urlBackend = "https://imeco-srl.herokuapp.com";
-
 
 /***/ })
 

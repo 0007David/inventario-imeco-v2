@@ -91,10 +91,14 @@ __webpack_require__.r(__webpack_exports__);
           timer: 1000
         });
         _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].post('/proveedor', this.formData).then(function (response) {
-          // console.log(response.data);
+          console.log(response.data);
+
           _this.$router.push({
             name: 'proveedor-index'
           });
+        })["catch"](function (error) {
+          console.log(error);
+          console.log(error.message);
         });
       }
     },
@@ -118,7 +122,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../../../node_module
 
 
 // module
-exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*Estilo CSS*/\n", ""]);
+exports.push([module.i, "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n/*Estilo CSS*/\n", ""]);
 
 // exports
 
@@ -437,28 +441,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ "./resources/js/utils/const.js");
-
 
 var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: _const__WEBPACK_IMPORTED_MODULE_1__["default"] + '/api'
+  baseURL: '/api'
 });
 /* harmony default export */ __webpack_exports__["default"] = (axiosClient);
-
-/***/ }),
-
-/***/ "./resources/js/utils/const.js":
-/*!*************************************!*\
-  !*** ./resources/js/utils/const.js ***!
-  \*************************************/
-/*! exports provided: urlBackend */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "urlBackend", function() { return urlBackend; });
-var urlBackend = "https://imeco-srl.herokuapp.com";
-
 
 /***/ })
 

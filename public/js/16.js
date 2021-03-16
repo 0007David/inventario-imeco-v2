@@ -138,8 +138,8 @@ __webpack_require__.r(__webpack_exports__);
         var respuesta = response.data.data;
         _this.roles = respuesta.roles;
       })["catch"](function (error) {
-        // console.log(error);
-        alert(error); // this.setErrorUsuario(error);
+        console.log(error); // alert(error);
+        // this.setErrorUsuario(error);
       })["finally"](function () {// this.modalDestroyConfirmation = false;
         // console.log('finally request');
       });
@@ -307,57 +307,65 @@ var render = function() {
                             _c(
                               "tbody",
                               _vm._l(_vm.roles, function(rol, index) {
-                                return _c("tr", { attrs: { scope: "row" } }, [
-                                  _c("td", [_vm._v(_vm._s(index + 1))]),
-                                  _vm._v(" "),
-                                  _c("td", [_vm._v(_vm._s(rol.nombre))]),
-                                  _vm._v(" "),
-                                  _c(
-                                    "td",
-                                    [
+                                return _c(
+                                  "tr",
+                                  { key: index, attrs: { scope: "row" } },
+                                  [
+                                    _c("td", [_vm._v(_vm._s(index + 1))]),
+                                    _vm._v(" "),
+                                    _c("td", [_vm._v(_vm._s(rol.nombre))]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "btn btn-warning",
+                                            attrs: {
+                                              to:
+                                                "/rol/" +
+                                                _vm.encrypt(rol.id) +
+                                                "/edit",
+                                              "data-toggle": "tooltip",
+                                              "data-placement": "top",
+                                              title: "Editar"
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-edit"
+                                            })
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    ),
+                                    _vm._v(" "),
+                                    _c("td", [
                                       _c(
-                                        "router-link",
+                                        "button",
                                         {
-                                          staticClass: "btn btn-warning",
-                                          attrs: {
-                                            to:
-                                              "/rol/" +
-                                              _vm.encrypt(rol.id) +
-                                              "/edit",
-                                            "data-toggle": "tooltip",
-                                            "data-placement": "top",
-                                            title: "Editar"
+                                          staticClass: "btn btn-danger",
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.eliminarRol(
+                                                index,
+                                                rol.id
+                                              )
+                                            }
                                           }
                                         },
-                                        [_c("i", { staticClass: "fa fa-edit" })]
+                                        [
+                                          _c("i", {
+                                            staticClass: "fa fa-eraser",
+                                            staticStyle: { cursor: "pointer" }
+                                          })
+                                        ]
                                       )
-                                    ],
-                                    1
-                                  ),
-                                  _vm._v(" "),
-                                  _c("td", [
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass: "btn btn-danger",
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.eliminarRol(
-                                              index,
-                                              rol.id
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass: "fa fa-eraser",
-                                          staticStyle: { cursor: "pointer" }
-                                        })
-                                      ]
-                                    )
-                                  ])
-                                ])
+                                    ])
+                                  ]
+                                )
                               }),
                               0
                             )
@@ -556,28 +564,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ "./resources/js/utils/const.js");
-
 
 var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: _const__WEBPACK_IMPORTED_MODULE_1__["default"] + '/api'
+  baseURL: '/api'
 });
 /* harmony default export */ __webpack_exports__["default"] = (axiosClient);
-
-/***/ }),
-
-/***/ "./resources/js/utils/const.js":
-/*!*************************************!*\
-  !*** ./resources/js/utils/const.js ***!
-  \*************************************/
-/*! exports provided: urlBackend */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "urlBackend", function() { return urlBackend; });
-var urlBackend = "https://imeco-srl.herokuapp.com";
-
 
 /***/ })
 

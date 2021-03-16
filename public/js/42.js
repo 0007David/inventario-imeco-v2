@@ -10,7 +10,6 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../utils/axiosClient */ "./resources/js/utils/axiosClient.js");
-/* harmony import */ var _utils_const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../utils/const */ "./resources/js/utils/const.js");
 //
 //
 //
@@ -97,7 +96,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   name: 'navbar',
@@ -109,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
     logout: function logout() {
       _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__["default"].post('/logout').then(function (response) {
         // console.log(response.data);
-        window.location.href = _utils_const__WEBPACK_IMPORTED_MODULE_1__["default"] + '/login';
+        window.location.href = '/login';
 
         if (localStorage.getItem('session')) {
           localStorage.removeItem('session');
@@ -363,28 +361,11 @@ render._withStripped = true
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ "./resources/js/utils/const.js");
-
 
 var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: _const__WEBPACK_IMPORTED_MODULE_1__["default"] + '/api'
+  baseURL: '/api'
 });
 /* harmony default export */ __webpack_exports__["default"] = (axiosClient);
-
-/***/ }),
-
-/***/ "./resources/js/utils/const.js":
-/*!*************************************!*\
-  !*** ./resources/js/utils/const.js ***!
-  \*************************************/
-/*! exports provided: urlBackend */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "urlBackend", function() { return urlBackend; });
-var urlBackend = "https://imeco-srl.herokuapp.com";
-
 
 /***/ }),
 

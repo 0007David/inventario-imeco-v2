@@ -218,8 +218,7 @@ __webpack_require__.r(__webpack_exports__);
         _this.notaCompra.codigo_nota = 'N00' + _this.notaCompra.id;
         _this.detalleNotaCompra = respuesta.detalle;
       })["catch"](function (error) {
-        console.log(error);
-        alert(error);
+        console.log(error); // alert(error);
       });
     },
     desencrypt: function desencrypt(value) {
@@ -708,28 +707,11 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
-/* harmony import */ var _const__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./const */ "./resources/js/utils/const.js");
-
 
 var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
-  baseURL: _const__WEBPACK_IMPORTED_MODULE_1__["default"] + '/api'
+  baseURL: '/api'
 });
 /* harmony default export */ __webpack_exports__["default"] = (axiosClient);
-
-/***/ }),
-
-/***/ "./resources/js/utils/const.js":
-/*!*************************************!*\
-  !*** ./resources/js/utils/const.js ***!
-  \*************************************/
-/*! exports provided: urlBackend */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "urlBackend", function() { return urlBackend; });
-var urlBackend = "https://imeco-srl.herokuapp.com";
-
 
 /***/ })
 

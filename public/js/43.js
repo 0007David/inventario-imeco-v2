@@ -91,8 +91,8 @@ __webpack_require__.r(__webpack_exports__);
 
         _this.cargarData(respuesta);
       })["catch"](function (error) {
-        // console.log(error);
-        alert(error); // this.setErrorUsuario(error);
+        console.log(error); // alert(error);
+        // this.setErrorUsuario(error);
       })["finally"](function () {// this.modalDestroyConfirmation = false;
         // console.log('finally request');
       });
