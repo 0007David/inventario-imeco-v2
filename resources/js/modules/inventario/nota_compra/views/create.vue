@@ -307,7 +307,7 @@ import { atob } from '../../../../mixins/util';
         computed: {
             seGuardaForm() {
                 console.log( typeof this.selectedMateriales);
-                if( typeof this.selectedMateriales === "undefined" ){
+                if( typeof this.selectedMateriales === "undefined" ) {
                     this.seGuarda = false;
                 }else{
                     this.seGuarda = this.selectedMateriales.length > 0;
@@ -375,7 +375,6 @@ import { atob } from '../../../../mixins/util';
                 }
                 return this.formData.montototal;
             },
-
             eliminarMaterial(index) {
                 this.selectedMateriales.splice(index, 1);
             },
@@ -414,8 +413,7 @@ import { atob } from '../../../../mixins/util';
             },
             cargarFormData() {
                 this.selectedMateriales.forEach(material => {
-                    this.formData.detalleNotaCompra.push(
-                    {
+                    this.formData.detalleNotaCompra.push({
                         cod_material: material.codigo,
                         precio: material.precio,
                         cantidad: material.cantidad_min
@@ -436,7 +434,6 @@ import { atob } from '../../../../mixins/util';
             isNumber(string) {
                 return !isNaN(parseFloat(string)) && isFinite(string);
             }
-
         },
         watch: {
             selectedMateriales: function(newValue, oldValue) {

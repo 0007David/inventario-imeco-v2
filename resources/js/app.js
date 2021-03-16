@@ -15,6 +15,7 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 // Boostrap
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
+import { isAuth } from './utils/utils';
 
 Vue.component('pagination', require('laravel-vue-pagination'));
 
@@ -31,6 +32,12 @@ const router = new VueRouter({
     mode: 'history',
     routes: routes
 });
+router.beforeEach(function (to, from, next) {
+        if (to.name !== 'login' && !isAuth())
+            window.location.href = '/login';
+        else
+            next();
+    });
 const app = new Vue(
     Vue.util.extend({ router },
     App)

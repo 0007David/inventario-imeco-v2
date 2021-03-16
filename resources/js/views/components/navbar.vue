@@ -74,7 +74,7 @@
                     <span class="float-right text-muted text-sm">3 mins</span>
                 </a>
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item dropdown-footer">Logout</a>
+                <a @click="logout" class="dropdown-item dropdown-footer">Logout</a>
                 </div>
             </li>
 
@@ -85,6 +85,7 @@
 </template>
 
 <script>
+import axiosClient from '../../utils/axiosClient';
     export default {
         name: 'navbar',
         created() {
@@ -96,6 +97,17 @@
             }
         },
         methods: {
+            logout(){
+                axiosClient.post('/logout')
+                    .then((response) => {
+                        // console.log(response.data);
+                        window.location.href = '/login';
+                        if( localStorage.getItem('session')){
+                            localStorage.removeItem('session');
+                        }
+                    });
+            }
+
 
         }
     }

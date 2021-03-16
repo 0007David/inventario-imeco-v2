@@ -55,7 +55,7 @@
                                                 </thead>
                                                 <tbody>
 
-                                                    <tr role="row" v-for="(usuario, index) in usuarios">
+                                                    <tr role="row" v-for="(usuario, index) in usuarios" :key="index">
                                                         <td> {{ index+1 }}</td>
                                                         <td> {{ usuario.name }} </td>
                                                         <td> {{ usuario.email }} </td>

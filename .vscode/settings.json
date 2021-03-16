@@ -2,5 +2,6 @@
     "php.suggest.basic": false,
     "files.associations": {
         "files.associations": "{ \"*.module\": \"php\" }"
-    }
+    },
+    "git.ignoreLimitWarning": true
 }

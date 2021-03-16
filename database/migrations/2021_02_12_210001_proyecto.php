@@ -20,10 +20,8 @@ class Proyecto extends Migration
             $table->string('nombre_corto');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->unsignedBigInteger('id_etapa');
             $table->unsignedBigInteger('id_user');
             //relations with other tables
-            $table->foreign('id_etapa')->references('id')->on('etapa');
             $table->foreign('id_user')->references('id')->on('users');
             $table->rememberToken();
             $table->timestamps();

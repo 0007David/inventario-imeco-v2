@@ -4,45 +4,41 @@ import moduleUsuariosRoutes from '../modules/usuarios/routes/moduleUsuariosRoute
 import moduleProyectosRoutes from '../modules/proyectos/routes/moduleProyectosRoutes';
 import moduleAlmacenRoutes from '../modules/inventario/routes/moduleInventarioRoutes';
 
-import ArticleIndex from '../components/ArticleIndex.vue';
-import ArticleCreate from '../components/ArticleCreate.vue';
-import ArticleShow from '../components/ArticleShow.vue';
-import ArticleEdit from '../components/ArticleEdit.vue';
+import { isAuth } from '../utils/utils';
 
 
 const routes = [
     {
-        name: 'home',
+        name: '/',
         path: '/',
-        component: ArticleIndex
+        component: () => import ('./../views/home/home.vue'),
     },
     {
-        name: 'create',
-        path: '/article/create',
-        component: ArticleCreate
-    },
-    {
-        name: 'edit',
-        path: '/article/edit/:id',
-        component: ArticleEdit
-    },
-    {
-        name: 'show',
-        path: '/article/show/:id',
-        component: ArticleShow
+        name: '/home',
+        path: '/',
+        component: () => import ('./../views/home/home.vue'),
     },
     ...moduleUsuariosRoutes,
     ...moduleProyectosRoutes,
     ...moduleAlmacenRoutes,
     {
         path: '*',
-        beforeEnter: async (to, from, next) => {
-            // util.hideSpinnerLoading();
-            // console.log(to, from, next);
-            next();
+        beforeEnter:  function (to, from, next) {
+            if (to.name !== 'login' && !isAuth()) {
+                // console.log('no login');
+                window.location.href = '/notFount';
+            } else if(to.name !== 'login' && isAuth()){
+                window.location.href = '/login';
+            }else{
+                next();
+            }
+
         },
-        component: () => import('../views/layout/notFound')
-    }
+    },
+    // router.beforeEach((to, from, next) => {
+    //     if (to.name !== 'Login' && !isAuthenticated) next({ name: 'Login' })
+    //     else next()
+    //   })
 ];
 
 export default routes;

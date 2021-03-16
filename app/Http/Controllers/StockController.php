@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Almacen;
-use App\Stock;
-use App\DetalleNotaCompra;
-use Illuminate\Http\Request;
+use App\Stock;use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class StockController extends Controller
@@ -24,23 +22,20 @@ class StockController extends Controller
         $page = $request->page;
         $offset = ($page - 1) * $perPage;
         // Lista de Materiales Existentes en Stock
-        $sql = "SELECT st.id, al.nombre as almacen,
+        $sql = "SELECT st.id as id_stock, al.nombre as almacen,
                 ma.nro_material, ma.nombre, ca.nombre as categoria,
-                st.cantidad as cant_stock, st.fecha_vencimiento,
-                ma.cantidad_max, SUM(de.cantidad) as cant_detalle,
-                (st.cantidad - SUM(de.cantidad)) as stock_disponible
+                (st.cantidad + st.cantidad_anterior) as cant_stock, st.fecha_vencimiento,
+                ma.cantidad_max, ((st.cantidad + st.cantidad_anterior) - (SELECT ifnull(SUM(de.cantidad),0)
+                    from detalle_notasalida de where de.id_stock = st.id)) as  stock_disponible
             FROM material ma
                 inner join stock st on st.cod_material = ma.codigo
                 inner join almacen al on al.id = st.id_almacen
                 inner join categoria ca on ca.id = ma.id_categoria
-                inner join detalle_notasalida de on de.id_stock = st.id
             where  st.disponible = true AND
                 (ma.nombre LIKE '%$filterKey%' OR
                 al.nombre LIKE '%$filterKey%' OR
                 ma.nro_material LIKE '%$filterKey%' OR
                 ca.nombre LIKE '%$filterKey%')
-            group by st.id, al.nombre, ma.nro_material, ma.nombre, ca.nombre,
-	            cant_stock, st.fecha_vencimiento, ma.cantidad_max
             ORDER BY ma.codigo desc
             LIMIT ? OFFSET ?";
         $materiales = DB::select($sql, [$perPage, $offset]);
@@ -101,7 +96,15 @@ class StockController extends Controller
     {
         $materialesDetalle = $request->detalleStocks;
         foreach ($materialesDetalle as $key => $material) {
+            // verificar si existe stock disponible
             $stock = new Stock();
+            $stockAnterior = $this->existeStockDisponible($material['cod_material'], $material['id_almacen']);
+            if(!is_null($stockAnterior)) {
+                $stock->cantidad_anterior = $stockAnterior->stock_disponible;
+                $salida[] = DB::table('stock')
+                    ->where('id', $stockAnterior->id_stock)
+                    ->update(['disponible' => false]);
+            }
             $stock->cod_material = $material['cod_material'];
             $stock->cantidad = $material['cantidad'];
             $stock->precio = $material['precio'];
@@ -124,6 +127,24 @@ class StockController extends Controller
             "material" => $salida,
         ];
         return response()->json($response);
+    }
+
+    public function existeStockDisponible($idMaterial, $idAlmacen)
+    {
+        $sql = "SELECT st.id as id_stock, al.nombre as almacen,
+                ma.nro_material, ma.nombre, ca.nombre as categoria,
+                st.cantidad as cant_stock, st.fecha_vencimiento,
+                ma.cantidad_max, (st.cantidad - (SELECT ifnull(SUM(de.cantidad),0)
+                    from detalle_notasalida de where de.id_stock = st.id)) as  stock_disponible
+            FROM material ma
+                inner join stock st on st.cod_material = ma.codigo
+                inner join almacen al on al.id = st.id_almacen
+                inner join categoria ca on ca.id = ma.id_categoria
+            where  st.disponible = true AND st.cod_material = ? and st.id_almacen = ?";
+        $stock = DB::selectOne($sql,[$idMaterial, $idAlmacen]);
+        // return response()->json([$stock]);
+        return $stock;
+
     }
 
     /**

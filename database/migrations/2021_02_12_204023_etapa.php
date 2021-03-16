@@ -21,8 +21,10 @@ class Etapa extends Migration
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
             $table->unsignedBigInteger('id_etapa');
+            $table->unsignedBigInteger('id_proyecto');
             //relations with other tables
             $table->foreign('id_etapa')->references('id')->on('etapa');
+            $table->foreign('id_proyecto')->references('id')->on('proyecto');
             $table->rememberToken();
             $table->timestamps();
         });

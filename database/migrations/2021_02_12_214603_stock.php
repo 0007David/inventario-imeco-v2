@@ -18,17 +18,19 @@ class Stock extends Migration
             $table->bigIncrements('id')->unique();
             $table->date('fecha_entrada');
             $table->date('fecha_vencimiento');
-            $table->integer('cantidad');
-            $table->double('precio');
+            $table->integer('cantidad')->default(0);
+            $table->integer('cantidad_anterior')->default(0);
+            $table->double('precio')->default(0);
+            $table->boolean('disponible')->default(true);
             $table->unsignedBigInteger('cod_material');
             $table->unsignedBigInteger('id_almacen');
             $table->rememberToken();
             $table->timestamps();
-            
+
             //relations with other tables
             $table->foreign('cod_material')->references('codigo')->on('material');
             $table->foreign('id_almacen')->references('id')->on('almacen');
-           
+
         });
     }
 

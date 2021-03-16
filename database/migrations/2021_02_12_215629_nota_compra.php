@@ -23,11 +23,9 @@ class NotaCompra extends Migration
             $table->unsignedBigInteger('id_proveedor');
             $table->rememberToken();
             $table->timestamps();
-            
             //relations with other tables
             $table->foreign('id_user')->references('id')->on('users');
             $table->foreign('id_proveedor')->references('id')->on('proveedor');
-           
         });
     }
 

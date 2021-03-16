@@ -1,7 +1,7 @@
 let title = "Material";
 const materialRoutes = [
 	{
-		path: '/material',
+		path: '/materiales',
 		name: 'material-index',
 		component: () => import ('../views/index.vue'),
 		meta: {

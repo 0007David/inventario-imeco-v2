@@ -557,9 +557,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
 /* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_0__);
 
-var urlBackend = 'http://127.0.0.1:8088'; // process.env.MIX_URL_API_AFI;
-
-console.log(urlBackend);
+var urlBackend = "http://127.0.0.1:8000";
 var axiosClient = axios__WEBPACK_IMPORTED_MODULE_0___default.a.create({
   baseURL: urlBackend + '/api'
 });

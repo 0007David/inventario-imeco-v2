@@ -13,13 +13,6 @@ use Illuminate\Support\Facades\Route;
 | is assigned the "api" middleware group. Enjoy building your API!
 |
 */
-// Ejemlos
-Route::get('/articles', 'ArticleController@index');
-Route::post('/article/store', 'ArticleController@store');
-Route::get('/article/edit/{id}', 'ArticleController@getArticle');
-Route::get('/article/show/{id}', 'ArticleController@getArticle');
-Route::put('/article/update/{id}', 'ArticleController@update');
-Route::delete('/article/delete/{id}', 'ArticleController@delete');
 
 // Usuario
 Route::get('/usuario', 'UsuarioController@index')->name('usuario');
@@ -28,6 +21,10 @@ Route::get('/usuario/{id}/edit', 'UsuarioController@edit')->name('usuario-edit')
 Route::put('/usuario/{id}', 'UsuarioController@update')->name('usuario-update');
 Route::post('/usuario', 'UsuarioController@store')->name('usuario-store');
 Route::delete('/usuario/{id}', 'UsuarioController@destroy')->name('usuario-delete');
+
+Route::post('/login', 'LoginController@autenticar');
+Route::post('/logout', 'LoginController@logout');
+Route::get('/login/user', 'LoginController@getUsuario');
 
 // ROL
 Route::get('/rol', 'RolController@index')->name('rol');
@@ -111,3 +108,23 @@ Route::get('/nota_compra', 'NotaCompraController@index')->name('nota_compra');
 Route::get('/nota_compra/create', 'NotaCompraController@create')->name('nota_compra-create');
 Route::get('/nota_compra/{id}/show', 'NotaCompraController@show')->name('nota_compra-show');
 Route::post('/nota_compra', 'NotaCompraController@store')->name('nota_compra-store');
+
+//Proyecto
+Route::get('/proyecto', 'ProyectoController@index')->name('proyecto');
+Route::get('/proyecto/create', 'ProyectoController@create')->name('proyecto-create');
+Route::get('/proyecto/{id}/edit', 'ProyectoController@edit')->name('proyecto-edit');
+Route::put('/proyecto/{id}', 'ProyectoController@update')->name('proyecto-update');
+Route::post('/proyecto', 'ProyectoController@store')->name('proyecto-store');
+Route::delete('/proyecto/{id}', 'ProyectoController@destroy')->name('stock-delete');
+
+//Etapa
+Route::get('/etapa', 'EtapaController@index')->name('etapa');
+Route::get('/etapa/create', 'EtapaController@create')->name('etapa-create');
+Route::get('/etapa/{id}/sub-etapa', 'EtapaController@getSubEtapas')->name('sub-etapa-create');
+Route::get('/etapa/{id}/edit', 'EtapaController@edit')->name('etapa-edit');
+Route::get('/etapa/{id}/show', 'EtapaController@show')->name('etapa-show');
+Route::put('/etapa/{id}', 'EtapaController@update')->name('etapa-update');
+Route::post('/etapa', 'EtapaController@store')->name('etapa-store');
+Route::delete('/etapa/{id}', 'EtapaController@destroy')->name('etapa-delete');
+
+// Route::get('/stock/{id}/test', 'StockController@existeStockDisponible')->name('stock-test');

@@ -19,14 +19,15 @@ class DetalleCompra extends Migration
             $table->unsignedBigInteger('cod_material');
             $table->integer('cantidad');
             $table->double('precio');
+            $table->boolean('stocked')->default(false);
             $table->rememberToken();
             $table->timestamps();
-            
+
             //relations with other tables
 
             $table->foreign('id_notacompra')->references('id')->on('nota_compra');
             $table->foreign('cod_material')->references('codigo')->on('material');
-           
+
         });
     }
 
