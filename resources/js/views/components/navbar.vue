@@ -86,6 +86,7 @@
 
 <script>
 import axiosClient from '../../utils/axiosClient';
+import urlBackend from '../../utils/const';
     export default {
         name: 'navbar',
         created() {
@@ -101,7 +102,8 @@ import axiosClient from '../../utils/axiosClient';
                 axiosClient.post('/logout')
                     .then((response) => {
                         // console.log(response.data);
-                        window.location.href = '/login';
+
+                        window.location.href = urlBackend + '/login';
                         if( localStorage.getItem('session')){
                             localStorage.removeItem('session');
                         }

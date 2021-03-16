@@ -30,7 +30,6 @@ class MaterialController extends Controller
             inner join unidad_medida un on un.id = ma.id_unidad
         Where ma.nro_material LIKE '%$filterKey%' OR
             ma.nombre LIKE '%$filterKey%' OR
-            ma.precio LIKE '%$filterKey%' OR
             ca.nombre LIKE '%$filterKey%' OR
             un.nombre LIKE '%$filterKey%' OR
             ma.descripcion LIKE '%$filterKey%'

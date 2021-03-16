@@ -1,6 +1,7 @@
 import axios from 'axios';
+import urlBackend from './const';
 
-const urlBackend = process.env.MIX_URL_API;
+console.log(urlBackend);
 
 const axiosClient = axios.create({
     baseURL: urlBackend + '/api',
