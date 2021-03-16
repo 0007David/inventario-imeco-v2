@@ -14,12 +14,15 @@ class UserSeeder extends Seeder
      */
     public function run()
     {
-        $roles = factory(Rol::class,3)->create();
-
-        $roles->each(function($rol) {
-            $users = factory(User::class,2)->make();
-            $rol->users()->saveMany($users);
-        });
+        Rol::create([
+            'nombre' => 'Administrador'
+        ]);
+        Rol::create([
+            'nombre' => 'Encargado de Proyecto'
+        ]);
+        Rol::create([
+            'nombre' => 'Secretaria'
+        ]);
 
         User::create([
             'name' => 'admin',
