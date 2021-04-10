@@ -127,4 +127,6 @@ Route::put('/etapa/{id}', 'EtapaController@update')->name('etapa-update');
 Route::post('/etapa', 'EtapaController@store')->name('etapa-store');
 Route::delete('/etapa/{id}', 'EtapaController@destroy')->name('etapa-delete');
 
+
+
 // Route::get('/stock/{id}/test', 'StockController@existeStockDisponible')->name('stock-test');

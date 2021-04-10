@@ -17,7 +17,7 @@
             </div><!-- /.container-fluid -->
         </div>
         <!-- /.content-header -->
-
+        <order-progress></order-progress>
         <section class="content">
             <div class="container-fluid">
                 <!-- Main row -->
@@ -109,7 +109,8 @@
 <script>
 import axiosClient from '../../../../utils/axiosClient';
 import { btoa } from '../../../../mixins/util';
-export default {
+import OrderProgress from '../../../../views/components/OrderProgress.vue';
+export default{
     name: 'index',
     created() {
         this.getProveedores();

@@ -11,6 +11,7 @@
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _utils_axiosClient__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../../../../utils/axiosClient */ "./resources/js/utils/axiosClient.js");
 /* harmony import */ var _mixins_util__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../../../../mixins/util */ "./resources/js/mixins/util.js");
+/* harmony import */ var _views_components_OrderProgress_vue__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../views/components/OrderProgress.vue */ "./resources/js/views/components/OrderProgress.vue");
 //
 //
 //
@@ -119,6 +120,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -206,155 +208,167 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "content-wrapper" }, [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("section", { staticClass: "content" }, [
-      _c("div", { staticClass: "container-fluid" }, [
-        _c("div", { staticClass: "row" }, [
-          _c("div", { staticClass: "col-12" }, [
-            _c("div", { staticClass: "card" }, [
-              _c(
-                "div",
-                { staticClass: "card-header" },
-                [
-                  _c(
-                    "router-link",
-                    {
-                      staticClass: "btn btn-primary",
-                      attrs: { to: { name: "proveedor-create" } }
-                    },
-                    [
-                      _vm._v(
-                        "\n                                Nuevo\n                            "
-                      )
-                    ]
-                  )
-                ],
-                1
-              ),
-              _vm._v(" "),
-              _c("div", { staticClass: "card-body" }, [
+  return _c(
+    "div",
+    { staticClass: "content-wrapper" },
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("order-progress"),
+      _vm._v(" "),
+      _c("section", { staticClass: "content" }, [
+        _c("div", { staticClass: "container-fluid" }, [
+          _c("div", { staticClass: "row" }, [
+            _c("div", { staticClass: "col-12" }, [
+              _c("div", { staticClass: "card" }, [
                 _c(
                   "div",
-                  {
-                    staticClass: "dataTables_wrapper dt-bootstrap4",
-                    attrs: { id: "example2_wrapper" }
-                  },
+                  { staticClass: "card-header" },
                   [
-                    _vm._m(1),
-                    _vm._v(" "),
-                    _c("div", { staticClass: "row" }, [
-                      _c("div", { staticClass: "col-sm-12" }, [
-                        _c(
-                          "table",
-                          {
-                            staticClass:
-                              "table table-bordered table-hover dataTable",
-                            attrs: { role: "grid" }
-                          },
-                          [
-                            _vm._m(2),
-                            _vm._v(" "),
-                            _c(
-                              "tbody",
-                              _vm._l(_vm.proveedores, function(
-                                proveedor,
-                                index
-                              ) {
-                                return _c(
-                                  "tr",
-                                  { key: proveedor.id, attrs: { role: "row" } },
-                                  [
-                                    _c("td", [
-                                      _vm._v(" " + _vm._s(proveedor.id))
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(proveedor.nombre) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(proveedor.telefono) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _vm._v(
-                                        " " + _vm._s(proveedor.direccion) + " "
-                                      )
-                                    ]),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      [
+                    _c(
+                      "router-link",
+                      {
+                        staticClass: "btn btn-primary",
+                        attrs: { to: { name: "proveedor-create" } }
+                      },
+                      [
+                        _vm._v(
+                          "\n                                Nuevo\n                            "
+                        )
+                      ]
+                    )
+                  ],
+                  1
+                ),
+                _vm._v(" "),
+                _c("div", { staticClass: "card-body" }, [
+                  _c(
+                    "div",
+                    {
+                      staticClass: "dataTables_wrapper dt-bootstrap4",
+                      attrs: { id: "example2_wrapper" }
+                    },
+                    [
+                      _vm._m(1),
+                      _vm._v(" "),
+                      _c("div", { staticClass: "row" }, [
+                        _c("div", { staticClass: "col-sm-12" }, [
+                          _c(
+                            "table",
+                            {
+                              staticClass:
+                                "table table-bordered table-hover dataTable",
+                              attrs: { role: "grid" }
+                            },
+                            [
+                              _vm._m(2),
+                              _vm._v(" "),
+                              _c(
+                                "tbody",
+                                _vm._l(_vm.proveedores, function(
+                                  proveedor,
+                                  index
+                                ) {
+                                  return _c(
+                                    "tr",
+                                    {
+                                      key: proveedor.id,
+                                      attrs: { role: "row" }
+                                    },
+                                    [
+                                      _c("td", [
+                                        _vm._v(" " + _vm._s(proveedor.id))
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          " " + _vm._s(proveedor.nombre) + " "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          " " + _vm._s(proveedor.telefono) + " "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c("td", [
+                                        _vm._v(
+                                          " " +
+                                            _vm._s(proveedor.direccion) +
+                                            " "
+                                        )
+                                      ]),
+                                      _vm._v(" "),
+                                      _c(
+                                        "td",
+                                        [
+                                          _c(
+                                            "router-link",
+                                            {
+                                              staticClass: "btn btn-warning",
+                                              attrs: {
+                                                to:
+                                                  "/proveedor/" +
+                                                  _vm.encrypt(proveedor.id) +
+                                                  "/edit",
+                                                "data-toggle": "tooltip",
+                                                "data-placement": "top",
+                                                title: "Editar"
+                                              }
+                                            },
+                                            [
+                                              _c("i", {
+                                                staticClass: "fa fa-edit"
+                                              })
+                                            ]
+                                          )
+                                        ],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c("td", [
                                         _c(
-                                          "router-link",
+                                          "button",
                                           {
-                                            staticClass: "btn btn-warning",
-                                            attrs: {
-                                              to:
-                                                "/proveedor/" +
-                                                _vm.encrypt(proveedor.id) +
-                                                "/edit",
-                                              "data-toggle": "tooltip",
-                                              "data-placement": "top",
-                                              title: "Editar"
+                                            staticClass: "btn btn-danger",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.eliminarProveedor(
+                                                  index,
+                                                  proveedor.id
+                                                )
+                                              }
                                             }
                                           },
                                           [
                                             _c("i", {
-                                              staticClass: "fa fa-edit"
+                                              staticClass: "fa fa-eraser",
+                                              staticStyle: { cursor: "pointer" }
                                             })
                                           ]
                                         )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c("td", [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.eliminarProveedor(
-                                                index,
-                                                proveedor.id
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-eraser",
-                                            staticStyle: { cursor: "pointer" }
-                                          })
-                                        ]
-                                      )
-                                    ])
-                                  ]
-                                )
-                              }),
-                              0
-                            )
-                          ]
-                        )
+                                      ])
+                                    ]
+                                  )
+                                }),
+                                0
+                              )
+                            ]
+                          )
+                        ])
                       ])
-                    ])
-                  ]
-                )
+                    ]
+                  )
+                ])
               ])
             ])
           ])
         ])
       ])
-    ])
-  ])
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function() {

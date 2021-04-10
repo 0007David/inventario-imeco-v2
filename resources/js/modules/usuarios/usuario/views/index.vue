@@ -123,6 +123,12 @@ import { btoa } from '../../../../mixins/util';
                 roles: []
             }
         },
+        mounted(){
+            Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent',(e)=>
+            {
+            console.log('Mensaje en tiempo real'); 
+            });
+        },
         methods: {
             getUsuarios() {
                 axiosClient.get('/usuario').then(response => {
