@@ -69,6 +69,7 @@ class ProyectoController extends Controller
             for ($i=0; $i < count($etapas); $i++) {
                 $etapa = new Etapa();
                 $etapa->nombre = $etapas[$i];
+                $etapa->progreso = 0;
                 $etapa->id_proyecto = $proyecto->id;
                 $etapa->save();
             }

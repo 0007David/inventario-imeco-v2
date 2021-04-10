@@ -8,14 +8,6 @@ class Proyecto extends Model
 {
     protected $table = 'proyecto';
 
-    protected $fillable = [
-        'nombre',
-        'nombre_corto',
-        'fecha_inicio',
-        'fecha_fin',
-        'id_user'
-    ];
-
     protected $hidden = [
         'remember_token',
     ];
@@ -33,6 +25,7 @@ class Proyecto extends Model
      */
     public function etapas()
     {
-        return $this->hasMany('App\Etapa', 'id_proyecto');
+        return $this->hasMany('App\Etapa', 'id_proyecto')->where("id_etapa", "is not null");
     }
 }
+

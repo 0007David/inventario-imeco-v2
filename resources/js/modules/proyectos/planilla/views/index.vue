@@ -45,19 +45,23 @@
                                                 <thead>
                                                     <tr role="row">
                                                         <th>Codigo</th>
+                                                        <th>Proyecto</th>
                                                         <th>Fecha</th>
                                                         <th>Estado</th>
-                                                        <th>Control</th>
-                                                        <th>Editar</th>
-                                                        <th>Eliminar</th>
+                                                        <th>Usuario</th>
+                                                        <th>Nº Materiales</th>
+                                                        <th>Operaciones</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
 
                                                     <tr role="row" v-for="(planilla, index) in planillas" :key="planilla.codigo">
-                                                        <td> {{ planilla.codigo }}</td>
+                                                        <td> {{ planilla.planilla_numero }}</td>
+                                                        <td> {{ planilla.proyecto }} </td>
                                                         <td> {{ planilla.fecha }} </td>
-                                                           <td> {{ planilla.estado }} </td>
+                                                        <td> {{ planilla.estado }} </td>
+                                                        <td> {{ planilla.nombre_usuario }} </td>
+                                                        <td> {{ planilla.cantidad }} </td>
                                                         <td>
                                                             <router-link
                                                                 class="btn btn-warning"
@@ -67,19 +71,6 @@
                                                                 title="Editar">
                                                                 <i class="fa fa-edit"></i>
                                                             </router-link>
-                                                        </td>
-
-                                                         <td>
-                                                            <router-link
-                                                                class="btn btn-warning"
-                                                                :to="'/planilla/' + encrypt(planilla.codigo) + '/edit'"
-                                                                data-toggle="tooltip"
-                                                                data-placement="top"
-                                                                title="Editar">
-                                                                <i class="fa fa-edit"></i>
-                                                            </router-link>
-                                                        </td>
-                                                        <td>
                                                             <button
                                                                 class="btn btn-danger"
                                                                 @click="eliminarPlanilla(index,planilla.codigo)">
@@ -137,7 +128,7 @@ export default {
                 });
 
         },
-        
+
         eliminarPlanilla(index, id) {
             let proveedor = this.getPlanilla(id);
                 this.$swal.fire({
