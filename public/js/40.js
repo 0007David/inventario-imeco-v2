@@ -111,15 +111,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -267,7 +258,15 @@ var render = function() {
                                   },
                                   [
                                     _c("td", [
-                                      _vm._v(" " + _vm._s(planilla.codigo))
+                                      _vm._v(
+                                        " " + _vm._s(planilla.planilla_numero)
+                                      )
+                                    ]),
+                                    _vm._v(" "),
+                                    _c("td", [
+                                      _vm._v(
+                                        " " + _vm._s(planilla.proyecto) + " "
+                                      )
                                     ]),
                                     _vm._v(" "),
                                     _c("td", [
@@ -280,82 +279,67 @@ var render = function() {
                                       )
                                     ]),
                                     _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "btn btn-warning",
-                                            attrs: {
-                                              to:
-                                                "/planilla/" +
-                                                _vm.encrypt(planilla.codigo) +
-                                                "/edit",
-                                              "data-toggle": "tooltip",
-                                              "data-placement": "top",
-                                              title: "Editar"
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-edit"
-                                            })
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "td",
-                                      [
-                                        _c(
-                                          "router-link",
-                                          {
-                                            staticClass: "btn btn-warning",
-                                            attrs: {
-                                              to:
-                                                "/planilla/" +
-                                                _vm.encrypt(planilla.codigo) +
-                                                "/edit",
-                                              "data-toggle": "tooltip",
-                                              "data-placement": "top",
-                                              title: "Editar"
-                                            }
-                                          },
-                                          [
-                                            _c("i", {
-                                              staticClass: "fa fa-edit"
-                                            })
-                                          ]
-                                        )
-                                      ],
-                                      1
-                                    ),
+                                    _c("td", [
+                                      _vm._v(
+                                        " " +
+                                          _vm._s(planilla.nombre_usuario) +
+                                          " "
+                                      )
+                                    ]),
                                     _vm._v(" "),
                                     _c("td", [
-                                      _c(
-                                        "button",
-                                        {
-                                          staticClass: "btn btn-danger",
-                                          on: {
-                                            click: function($event) {
-                                              return _vm.eliminarPlanilla(
-                                                index,
-                                                planilla.codigo
-                                              )
-                                            }
-                                          }
-                                        },
-                                        [
-                                          _c("i", {
-                                            staticClass: "fa fa-eraser",
-                                            staticStyle: { cursor: "pointer" }
-                                          })
-                                        ]
+                                      _vm._v(
+                                        " " + _vm._s(planilla.cantidad) + " "
                                       )
-                                    ])
+                                    ]),
+                                    _vm._v(" "),
+                                    _c(
+                                      "td",
+                                      [
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "btn btn-warning",
+                                            attrs: {
+                                              to:
+                                                "/planilla/" +
+                                                _vm.encrypt(planilla.codigo) +
+                                                "/edit",
+                                              "data-toggle": "tooltip",
+                                              "data-placement": "top",
+                                              title: "Editar"
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-edit"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "button",
+                                          {
+                                            staticClass: "btn btn-danger",
+                                            on: {
+                                              click: function($event) {
+                                                return _vm.eliminarPlanilla(
+                                                  index,
+                                                  planilla.codigo
+                                                )
+                                              }
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-eraser",
+                                              staticStyle: { cursor: "pointer" }
+                                            })
+                                          ]
+                                        )
+                                      ],
+                                      1
+                                    )
                                   ]
                                 )
                               }),
@@ -422,15 +406,17 @@ var staticRenderFns = [
       _c("tr", { attrs: { role: "row" } }, [
         _c("th", [_vm._v("Codigo")]),
         _vm._v(" "),
+        _c("th", [_vm._v("Proyecto")]),
+        _vm._v(" "),
         _c("th", [_vm._v("Fecha")]),
         _vm._v(" "),
         _c("th", [_vm._v("Estado")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Control")]),
+        _c("th", [_vm._v("Usuario")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Editar")]),
+        _c("th", [_vm._v("Nº Materiales")]),
         _vm._v(" "),
-        _c("th", [_vm._v("Eliminar")])
+        _c("th", [_vm._v("Operaciones")])
       ])
     ])
   }

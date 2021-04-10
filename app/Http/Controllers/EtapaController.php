@@ -73,6 +73,7 @@ class EtapaController extends Controller
         $etapa = new Etapa();
         $etapa->nombre = $request->nombre;
         $etapa->progreso = $request->progreso;
+        $etapa->id_proyecto = $request->id_proyecto;
         $etapa->fecha_inicio = $request->fecha_inicio;
         $etapa->fecha_fin = $request->fecha_fin;
         $etapa->id_etapa = $request->id_etapa;
@@ -96,7 +97,7 @@ class EtapaController extends Controller
             FROM etapa eta
         INNER JOIN proyecto pro on pro.id = eta.id_proyecto
         INNER JOIN users us on pro.id_user = us.id
-        WHERE pro.id = ?";
+        WHERE pro.id = ? AND eta.id_etapa IS NULL";
         $etapas = DB::select($sql,[$id]);
 
         foreach($etapas as &$etapa){

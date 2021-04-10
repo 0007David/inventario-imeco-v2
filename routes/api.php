@@ -102,6 +102,8 @@ Route::post('/planilla', 'PlanillaController@store')->name('planilla-store');
 Route::get('/planilla/{id}/edit', 'PlanillaController@edit')->name('planilla-edit');
 Route::put('/planilla/{id}', 'PlanillaController@update')->name('planilla-update');
 Route::get('/planilla/{id}/addmaterial', 'PlanillaController@add')->name('planilla-add');
+Route::get('/planilla/materiales', 'PlanillaController@getMateriales')->name('planilla-materiales');
+
 
 //Nota de Compra
 Route::get('/nota_compra', 'NotaCompraController@index')->name('nota_compra');

@@ -29,7 +29,6 @@ class DependeMaterialController extends Controller
         Where ma.es_padre = false AND
             (ma.nro_material LIKE '%$filterKey%' OR
             ma.nombre LIKE '%$filterKey%' OR
-            ma.precio LIKE '%$filterKey%' OR
             ca.nombre LIKE '%$filterKey%' OR
             un.nombre LIKE '%$filterKey%' OR
             ma.descripcion LIKE '%$filterKey%')
