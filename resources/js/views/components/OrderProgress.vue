@@ -7,12 +7,12 @@
 </template>
 <script>
 import{progressbar} from 'vue-strap'
-export default {
-   components: {
-       progressbar
-  },
-  mounted(){
-      console.log('Component');
+  export default {
+    components: {
+        progressbar
+    },
+    mounted(){
+        console.log('Component');
+    }
   }
-}
 </script>

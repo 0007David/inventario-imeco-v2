@@ -116,6 +116,11 @@ import { btoa } from '../../../../mixins/util';
         name: 'index',
         created() {
             this.getUsuarios();
+            Echo.channel('imeco-realtime')
+        .listen('OrderStatusChangedEvent',(e)=> {
+            console.log('Mensaje en tiempo real');
+        });
+            Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent', (e) => { console.log('Hello Sockect')});
         },
         data() {
             return {
@@ -124,10 +129,11 @@ import { btoa } from '../../../../mixins/util';
             }
         },
         mounted(){
+            console.log('mounted');
             Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent',(e)=>
-            {
-            console.log('Mensaje en tiempo real'); 
-            });
+                {
+                    console.log('Mensaje en tiempo real');
+                });
         },
         methods: {
             getUsuarios() {

@@ -17,7 +17,6 @@ import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap-vue/dist/bootstrap-vue.css";
 import { isAuth } from './utils/utils';
 
-Vue.component('pagination', require('laravel-vue-pagination'));
 
 Vue.component('navbar',() => import('./views/components/navbar.vue'));
 Vue.component('asidebar',() => import('./views/components/asidebar.vue'));
@@ -43,13 +42,3 @@ router.beforeEach(function (to, from, next) {
 const app = new Vue(
     Vue.util.extend({ router },App),
 ).$mount('#app');
-
-/*const app= new Vue({
-el:'#app',
-mounted(){
-    window.Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent',(e)=>
-    {
-       console.log('Mensaje en tiempo real'); 
-    });
- }
-}).util.extend({router},App);*/
