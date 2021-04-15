@@ -71,6 +71,14 @@
                                                                 title="Editar">
                                                                 <i class="fa fa-edit"></i>
                                                             </router-link>
+                                                            <router-link
+                                                                class="btn btn-info"
+                                                                :to="'/planilla/' + encrypt(planilla.codigo) + '/ver'"
+                                                                data-toggle="tooltip"
+                                                                data-placement="top"
+                                                                title="Ver">
+                                                                <i class="fa fa-edit"></i>
+                                                            </router-link>
                                                             <button
                                                                 class="btn btn-danger"
                                                                 @click="eliminarPlanilla(index,planilla.codigo)">
@@ -108,9 +116,17 @@ export default {
     },
     data() {
         return {
+          
             planillas: []
         }
     },
+    /*mounted(){
+      console.log('mounted');
+      window.Echo.channel('imeco-realtime' ).listen('OrderStatusChangedEvent',(e)=>
+       {
+        console.log('Mensaje en tiempo real');
+        });
+    },*/
     methods: {
         getPlanillas() {
             axiosClient.get('/planilla').then(response => {

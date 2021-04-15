@@ -6,6 +6,7 @@ use App\Planilla;
 use App\Material;
 use App\Categoria;
 use App\DetallePlanilla;
+use App\Events\OrderStatusChangedEvent;
 use App\Proyecto;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -22,6 +23,8 @@ class PlanillaController extends Controller
     public function index()
     {
         $response = array();
+        /*$sql ="SELECT planilla.codigo, planilla.planilla_numero, planilla.fecha,planilla.estado,planilla.descripcion,proyecto.nombre as proyecto, users.name as nombre_usuario 
+            FROM planilla,proyecto,users WHERE planilla.id_proyecto=proyecto.id and planilla.id_user=users.id";*/
         $sql = "SELECT pla.codigo, pla.planilla_numero, pro.nombre as proyecto, pla.descripcion, pla.estado, pla.created_at as fecha,
                     us.name as nombre_usuario, (SELECT COUNT(de.id) FROM detalle_planilla de where de.id_planilla = pla.codigo) as cantidad
                 FROM planilla pla
@@ -152,10 +155,14 @@ class PlanillaController extends Controller
         $planilla->estado = $request->estado;
         $planilla->updated_at = date('Y-m-d H:i:s');
         $planilla->update();
+        event(new OrderStatusChangedEvent($planilla));
         $response["data"] = [
             "planillas" => $planilla,
         ];
+     
         return response()->json($response);
+        ///
+       
     }
 
     /**

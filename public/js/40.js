@@ -111,6 +111,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -123,6 +131,14 @@ __webpack_require__.r(__webpack_exports__);
       planillas: []
     };
   },
+
+  /*mounted(){
+    console.log('mounted');
+    window.Echo.channel('imeco-realtime' ).listen('OrderStatusChangedEvent',(e)=>
+     {
+      console.log('Mensaje en tiempo real');
+      });
+  },*/
   methods: {
     getPlanillas: function getPlanillas() {
       var _this = this;
@@ -308,6 +324,27 @@ var render = function() {
                                               "data-toggle": "tooltip",
                                               "data-placement": "top",
                                               title: "Editar"
+                                            }
+                                          },
+                                          [
+                                            _c("i", {
+                                              staticClass: "fa fa-edit"
+                                            })
+                                          ]
+                                        ),
+                                        _vm._v(" "),
+                                        _c(
+                                          "router-link",
+                                          {
+                                            staticClass: "btn btn-info",
+                                            attrs: {
+                                              to:
+                                                "/planilla/" +
+                                                _vm.encrypt(planilla.codigo) +
+                                                "/ver",
+                                              "data-toggle": "tooltip",
+                                              "data-placement": "top",
+                                              title: "Ver"
                                             }
                                           },
                                           [

@@ -107,6 +107,12 @@
                             </router-link>
                         </li>
                         <li class="nav-item">
+                            <router-link :to="{ name: 'planilla-index' }" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Buzon de planillas</p>
+                            </router-link>
+                        </li>
+                        <li class="nav-item">
                             <router-link :to="{ name: 'stock-index' }" class="nav-link">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Stock</p>

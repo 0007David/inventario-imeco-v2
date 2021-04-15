@@ -100,6 +100,7 @@ Route::get('/planilla', 'PlanillaController@index')->name('planilla');
 Route::get('/planilla/create', 'PlanillaController@create')->name('planilla-create');
 Route::post('/planilla', 'PlanillaController@store')->name('planilla-store');
 Route::get('/planilla/{id}/edit', 'PlanillaController@edit')->name('planilla-edit');
+Route::get('/planilla/{id}/ver_estado', 'PlanillaController@edit')->name('planilla-ver');
 Route::put('/planilla/{id}', 'PlanillaController@update')->name('planilla-update');
 Route::get('/planilla/{id}/addmaterial', 'PlanillaController@add')->name('planilla-add');
 Route::get('/planilla/materiales', 'PlanillaController@getMateriales')->name('planilla-materiales');

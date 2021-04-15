@@ -33,6 +33,14 @@ const planillaRoutes = [
             title: title + ' | Modificar'
         }
     },
+	{
+        path: '/planilla/:id/ver',
+        name: 'planilla-ver',
+        component: () => import ('../views/ver_estado.vue'),
+        meta: {
+            title: title + ' | Modificar'
+        }
+    },
 
 ];
 export default planillaRoutes;

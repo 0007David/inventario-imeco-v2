@@ -128,12 +128,11 @@ __webpack_require__.r(__webpack_exports__);
   name: 'index',
   created: function created() {
     this.getUsuarios();
-    Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent', function (e) {
-      console.log('Mensaje en tiempo real');
+    /*Echo.channel('imeco-realtime')
+    .listen('OrderStatusChangedEvent',(e)=> {
+    console.log('Mensaje en tiempo real');
     });
-    Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent', function (e) {
-      console.log('Hello Sockect');
-    });
+    Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent', (e) => { console.log('Hello Sockect')});*/
   },
   data: function data() {
     return {
@@ -142,8 +141,8 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    console.log('mounted');
-    Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent', function (e) {
+    console.log('mounted1123');
+    window.Echo.channel('imeco-realtime').listen('OrderStatusChangedEvent', function (e) {
       console.log('Mensaje en tiempo real');
     });
   },

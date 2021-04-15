@@ -68,6 +68,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -294,12 +296,20 @@ var render = function() {
                         _vm._v("Espera")
                       ]),
                       _vm._v(" "),
-                      _c("option", { attrs: { value: "Proceso" } }, [
-                        _vm._v("Proceso")
+                      _c("option", { attrs: { value: "Verificado" } }, [
+                        _vm._v("Verificado")
                       ]),
                       _vm._v(" "),
                       _c("option", { attrs: { value: "Compra" } }, [
                         _vm._v("Compra")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Enviado" } }, [
+                        _vm._v("Enviado")
+                      ]),
+                      _vm._v(" "),
+                      _c("option", { attrs: { value: "Entregado" } }, [
+                        _vm._v("Entregado")
                       ])
                     ]
                   )

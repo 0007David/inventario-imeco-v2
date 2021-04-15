@@ -10,8 +10,8 @@
                             <ul>
                                 <li v-for="error in errors" :key="error">{{ error }}</li>
                             </ul>
+                        
                         </div>
-
                         <form v-on:submit.prevent="modificar">
                             <div class='form-group'>
                                 <label htmlFor='codigo'>
@@ -29,8 +29,10 @@
                                     Estado
                                 </label> <select id="estado"  class="form-control" v-model="formData.estado">
                                         <option value="Espera">Espera</option>
-                                        <option value="Proceso">Proceso</option>
+                                        <option value="Verificado">Verificado</option>
                                         <option value="Compra">Compra</option>
+                                        <option value="Enviado">Enviado</option>
+                                        <option value="Entregado">Entregado</option>
                                         </select>
                             </div>
                             
@@ -73,6 +75,7 @@ export default {
             errors: []
         }
     },
+    
     methods: {
         getData() {
                 axiosClient.get(

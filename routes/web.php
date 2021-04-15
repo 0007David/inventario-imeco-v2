@@ -16,10 +16,10 @@ use Illuminate\Support\Facades\Route;
 
 //Route::get('/login', 'LoginController@index');
 
-Route::get('/fire',function(){
+/*Route::get('/fire',function(){
     event(new OrderStatusChangedEvent);
     return 'Hola mundo';
-});
+});*/
 
 Route::get('/{any}', function () {
     return view('app');
